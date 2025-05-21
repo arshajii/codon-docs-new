@@ -1,0 +1,1450 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../gpu/">
+      
+      
+        <link rel="next" href="../parallel/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Ir - Codon Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/exaloop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#at-a-glance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Codon Docs" class="md-header__button md-logo" aria-label="Codon Docs" data-md-component="logo">
+      
+  <img src="../../img/image.avif" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Codon Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ir
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Codon Docs" class="md-nav__button md-logo" aria-label="Codon Docs" data-md-component="logo">
+      
+  <img src="../../img/image.avif" alt="logo">
+
+    </a>
+    Codon Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is Codon?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ir
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parallel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parallel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pipelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Interop
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Interop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interop/cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interop/decorator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Decorator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interop/jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jupyter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interop/numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Numpy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interop/pyext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pyext
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interop/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Intro
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/differences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Differences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using codon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/collections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Collections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/extra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/ffi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ffi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/generators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Generators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/llvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Llvm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/statics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Statics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>After type checking but before native code generation, the Codon compiler
+makes use of a new <a href="https://en.wikipedia.org/wiki/Intermediate_representation">intermediate representation</a>
+called CIR, where a number of higher-level optimizations, transformations and analyses take place.
+CIR offers a comprehensive framework for writing new optimizations or
+analyses without having to deal with cumbersome abstract syntax trees (ASTs).
+In this section we'll give an overview of CIR, discuss the types of things
+you might want to use it for, and give a few examples.</p>
+<h1 id="at-a-glance">At a glance</h1>
+<p>Here is a small (simplified) example showcasing CIR in action. Consider the code:</p>
+<pre><code class="language-python">def fib(n):
+    if n &lt; 2:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+</code></pre>
+<p>When instantiated with an <code>int</code> argument, the following IR gets produced (the
+names have been cleaned up for simplicity):</p>
+<pre><code class="language-lisp">(bodied_func
+  '&quot;fib[int]&quot;
+  (type '&quot;fib[int]&quot;)
+  (args (var '&quot;n&quot; (type '&quot;int&quot;) (global false)))
+  (vars)
+  (series
+    (if (call '&quot;int.__lt__[int,int]&quot; '&quot;n&quot; 2)
+      (series (return 1))
+      (series
+        (return
+          (call
+            '&quot;int.__add__[int,int]&quot;
+            (call
+              '&quot;fib[int]&quot;
+              (call '&quot;int.__sub__[int,int]&quot; '&quot;n&quot; 1))
+            (call
+              '&quot;fib[int]&quot;
+              (call '&quot;int.__sub__[int,int]&quot; '&quot;n&quot; 2))))))))
+</code></pre>
+<p>A few interesting points to consider:</p>
+<ul>
+<li>CIR is hierarchical like ASTS, but unlike ASTs it uses a vastly reduced
+  set of nodes, making it much easier to work with and reason about.</li>
+<li>Operators are expressed as function calls. In fact, CIR has no explicit
+  concept of <code>+</code>, <code>-</code>, etc. and instead expresses these via their corresponding
+  magic methods (<code>__add__</code>, <code>__sub__</code>, etc.).</li>
+<li>CIR has no concept of generic types. By the time CIR is generated, all types
+  need to have been resolved.</li>
+</ul>
+<h1 id="structure">Structure</h1>
+<p>CIR is comprised of a set of <em>nodes</em>, each with a specific semantic meaning.
+There are nodes for representing constants (e.g. <code>42</code>), instructions (e.g. <code>call</code>)
+control flow (e.g. <code>if</code>), types (e.g. <code>int</code>) and so on.</p>
+<p>Here is a table showing the different types of nodes, LLVM IR equivalents,
+and some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>LLVM equivalent</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Node</code></td>
+<td>n/a</td>
+<td>all of the below</td>
+</tr>
+<tr>
+<td><code>Module</code></td>
+<td><code>Module</code></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><code>Type</code></td>
+<td><code>Type</code></td>
+<td><code>IntType</code>, <code>FuncType</code>, <code>RefType</code></td>
+</tr>
+<tr>
+<td><code>Var</code></td>
+<td><code>AllocaInst</code></td>
+<td><code>Var</code>, <code>Func</code></td>
+</tr>
+<tr>
+<td><code>Func</code></td>
+<td><code>Function</code></td>
+<td><code>BodiedFunc</code>, <code>ExternalFunc</code>, <code>LLVMFunc</code></td>
+</tr>
+<tr>
+<td><code>Value</code></td>
+<td><code>Value</code></td>
+<td>all of the below</td>
+</tr>
+<tr>
+<td><code>Const</code></td>
+<td><code>Constant</code></td>
+<td><code>IntConst</code>, <code>FloatConst</code>, <code>StringConst</code></td>
+</tr>
+<tr>
+<td><code>Instr</code></td>
+<td><code>Instruction</code></td>
+<td><code>CallInstr</code>, <code>TernaryInstr</code>, <code>ThrowInstr</code></td>
+</tr>
+<tr>
+<td><code>Flow</code></td>
+<td>n/a</td>
+<td><code>IfFlow</code>, <code>WhileFlow</code>, <code>ForFlow</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="uses">Uses</h1>
+<p>CIR provides a framework for doing program optimizations, analyses and transformations.
+These operations are collectively known as IR <em>passes</em>.</p>
+<p>A number of built-in passes and other functionalities are provided by CIR. These can be
+used as building blocks to create new passes. Examples include:</p>
+<ul>
+<li>Control-flow graph creation</li>
+<li>Reaching definitions</li>
+<li>Dominator analysis</li>
+<li>Side effect analysis</li>
+<li>Constant propagation and folding</li>
+<li>Canonicalization</li>
+<li>Inlining and outlining</li>
+<li>Python-specific optimizations targeting several common Python idioms</li>
+</ul>
+<p>We're regularly adding new standard passes, so this list is always growing.</p>
+<h2 id="an-example">An example</h2>
+<p>Let's look at a real example. Imagine we want to write a pass that transforms expressions
+of the form <code>&lt;int const&gt; + &lt;int const&gt;</code> into a single <code>&lt;int const&gt;</code> denoting the result.
+In other words, a simple form of constant folding that only looks at addition on integers.
+The resulting pass would like this:</p>
+<pre><code class="language-cpp">#include &quot;codon/cir/transform/pass.h&quot;
+
+using namespace codon::ir;
+
+class MyAddFolder : public transform::OperatorPass {
+public:
+  static const std::string KEY;
+  std::string getKey() const override { return KEY; }
+
+  void handle(CallInstr *v) override {
+    auto *f = util::getFunc(v-&gt;getCallee());
+    if (!f || f-&gt;getUnmangledName() != &quot;__add__&quot; || v-&gt;numArgs() != 2)
+        return;
+
+    auto *lhs = cast&lt;IntConst&gt;(v-&gt;front());
+    auto *rhs = cast&lt;IntConst&gt;(v-&gt;back());
+
+    if (lhs &amp;&amp; rhs) {
+      auto sum = lhs-&gt;getVal() + rhs-&gt;getVal();
+      v-&gt;replaceAll(v-&gt;getModule()-&gt;getInt(sum));
+    }
+  }
+};
+
+const std::string MyAddFolder::KEY = &quot;my-add-folder&quot;;
+</code></pre>
+<p>So how does this actually work, and what do the different components mean? Here
+are some notable points:</p>
+<ul>
+<li>Most passes can inherit from <code>transform::OperatorPass</code>. <code>OperatorPass</code> is a combination
+  of an <code>Operator</code> and a <code>Pass</code>. An <code>Operator</code> is a utility visitor that provides hooks for
+  handling all the different node types (i.e. through the <code>handle()</code> methods). <code>Pass</code> is the
+  base class representing a generic pass, which simply provides a <code>run()</code> method that takes
+  a module.</li>
+<li>Because of this, <code>MyAddFolder::handle(CallInstr *)</code> will be called on every call instruction
+  in the module.</li>
+<li>Within our <code>handle()</code>, we first check to see if the function being called is <code>__add__</code>, indicating
+  addition (in practice there would be a more specific check to make sure this is <em>the</em> <code>__add__</code>),
+  and if so we extract the first and second arguments.</li>
+<li>We cast these arguments to <code>IntConst</code>. If the results are non-null, then both arguments were in fact
+  integer constants, meaning we can replace the original call instruction with a new constant that
+  represents the result of the addition. In CIR, all nodes are "replaceable" via a <code>replaceAll()</code> method.</li>
+<li>Lastly, notice that all passes have a <code>KEY</code> field to uniquely identify them.</li>
+</ul>
+<h2 id="bidirectionality">Bidirectionality</h2>
+<p>An important and often very useful feature of CIR is that it is <em>bidirectional</em>, meaning it's possible
+to return to the type checking stage to generate new IR nodes that were not initially present in the
+module. For example, imagine that your pass needs to use a <code>List</code> with some new element type; that list's
+methods need to be instantiated by the type checker for use in CIR. In practice this bidirectionality
+often lets you write large parts of your optimization or transformation in Codon, and pull out the necessary
+functions or types as needed in the pass.</p>
+<p>CIR's <code>Module</code> class has three methods to enable this feature:</p>
+<pre><code class="language-cpp">  /// Gets or realizes a function.
+  /// @param funcName the function name
+  /// @param args the argument types
+  /// @param generics the generics
+  /// @param module the module of the function
+  /// @return the function or nullptr
+  Func *getOrRealizeFunc(const std::string &amp;funcName, std::vector&lt;types::Type *&gt; args,
+                         std::vector&lt;types::Generic&gt; generics = {},
+                         const std::string &amp;module = &quot;&quot;);
+
+  /// Gets or realizes a method.
+  /// @param parent the parent class
+  /// @param methodName the method name
+  /// @param rType the return type
+  /// @param args the argument types
+  /// @param generics the generics
+  /// @return the method or nullptr
+  Func *getOrRealizeMethod(types::Type *parent, const std::string &amp;methodName,
+                           std::vector&lt;types::Type *&gt; args,
+                           std::vector&lt;types::Generic&gt; generics = {});
+
+  /// Gets or realizes a type.
+  /// @param typeName the type name
+  /// @param generics the generics
+  /// @param module the module of the type
+  /// @return the function or nullptr
+  types::Type *getOrRealizeType(const std::string &amp;typeName,
+                                std::vector&lt;types::Generic&gt; generics = {},
+                                const std::string &amp;module = &quot;&quot;);
+</code></pre>
+<p>Let's see bidirectionality in action. Consider the following Codon code:</p>
+<pre><code class="language-python">def foo(x):
+    return x*3 + x
+
+def validate(x, y):
+    assert y == x*4
+
+a = foo(10)
+b = foo(1.5)
+c = foo('a')
+</code></pre>
+<p>Assume we want our pass to insert a call to <code>validate()</code> after each assignment that takes the assigned variable
+and the argument passed to <code>foo()</code>. We would do something like the following:</p>
+<pre><code class="language-cpp">#include &quot;codon/cir/transform/pass.h&quot;
+
+using namespace codon::ir;
+
+class ValidateFoo : public transform::OperatorPass {
+public:
+  static const std::string KEY;
+  std::string getKey() const override { return KEY; }
+
+  void handle(AssignInstr *v) {
+    auto *M = v-&gt;getModule();
+    auto *var = v-&gt;getLhs();
+    auto *call = cast&lt;CallInstr&gt;(v-&gt;getRhs());
+    if (!call)
+      return;
+
+    auto *foo = util::getFunc(call-&gt;getCallee());
+    if (!foo || foo-&gt;getUnmangledName() != &quot;foo&quot;)
+      return;
+
+    auto *arg1 = call-&gt;front();         // argument of 'foo' call
+    auto *arg2 = M-&gt;Nr&lt;VarValue&gt;(var);  // result of 'foo' call
+    auto *validate =
+      M-&gt;getOrRealizeFunc(&quot;validate&quot;, {arg1-&gt;getType(), arg2-&gt;getType()});
+    auto *validateCall = util::call(validate, {arg1, arg2});
+
+    insertAfter(validateCall);  // call 'validate' after 'foo'
+  }
+};
+
+const std::string ValidateFoo::KEY = &quot;validate-foo&quot;;
+</code></pre>
+<p>Note that <code>insertAfter</code> is a convenience method of <code>Operator</code> that inserts the given node "after" the node
+being visited (along with <code>insertBefore</code> which inserts <em>before</em> the node being visited).</p>
+<p>Running this pass on the snippet above, we would get:</p>
+<pre><code class="language-python">a = foo(10)
+validate(10, a)
+
+b = foo(1.5)
+validate(1.5, b)
+
+c = foo('a')
+validate('a', c)
+</code></pre>
+<p>Notice that we used <code>getOrRealizeFunc</code> to create three different instances of <code>validate</code>: one for <code>int</code>
+arguments, one for <code>float</code> arguments and finally one for <code>str</code> arguments.</p>
+<h1 id="extending-the-ir">Extending the IR</h1>
+<p>CIR is extensible, and it is possible to add new constants, instructions, flows and types. This can be
+done by subclassing the corresponding <em>custom</em> base class; to create a custom type, for example, you
+would subclass <code>CustomType</code>. Let's look at an example where we extend CIR to add a 32-bit float type:</p>
+<pre><code class="language-cpp">using namespace codon::ir;
+
+#include &quot;codon/cir/dsl/nodes.h&quot;
+#include &quot;codon/cir/llvm/llvisitor.h&quot;
+
+class Builder : public dsl::codegen::TypeBuilder {
+public:
+  llvm::Type *buildType(LLVMVisitor *v) override {
+    return v-&gt;getBuilder()-&gt;getFloatTy();
+  }
+
+  llvm::DIType *buildDebugType(LLVMVisitor *v) override {
+    auto *module = v-&gt;getModule();
+    auto &amp;layout = module-&gt;getDataLayout();
+    auto &amp;db = v-&gt;getDebugInfo();
+    auto *t = buildType(v);
+    return db.builder-&gt;createBasicType(
+           &quot;float_32&quot;,
+           layout.getTypeAllocSizeInBits(t),
+           llvm::dwarf::DW_ATE_float);
+  }
+};
+
+class Float32 : public dsl::CustomType {
+public:
+  std::unique_ptr&lt;TypeBuilder&gt; getBuilder() const override {
+    return std::make_unique&lt;Builder&gt;();
+  }
+};
+</code></pre>
+<p>Notice that, in order to specify how to generate code for our <code>Float32</code> type, we create a <code>TypeBuilder</code>
+subclass with methods for building the corresponding LLVM IR type. There is also a <code>ValueBuilder</code> for
+new constants and converting them to LLVM IR, as well as a <code>CFBuilder</code> for new instructions and creating
+control-flow graphs out of them.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+When subclassing nodes other than types (e.g. instructions, flows, etc.), be sure to use the <code>AcceptorExtend</code>
+<a href="https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern">CRTP</a> class, as in
+<code>class MyNewInstr : public AcceptorExtend&lt;MyNewInstr, dsl::CustomInstr&gt;</code>.</p>
+<h1 id="utilities">Utilities</h1>
+<p>The <code>codon/cir/util/</code> directory has a number of utility and generally helpful functions, for things like
+cloning IR, inlining/outlining, matching and more. <code>codon/cir/util/irtools.h</code> in particular has many helpful
+functions for performing various common tasks. If you're working with CIR, be sure to take a look at these
+functions to make your life easier!</p>
+<h1 id="standard-pass-pipeline">Standard pass pipeline</h1>
+<p>These standard sets of passes are run in <code>release</code>-mode:</p>
+<ul>
+<li>
+<p>Python-specific optimizations: a series of passes to optimize common Python patterns and
+  idioms. Examples include dictionary updates of the form <code>d[k] = d.get(k, x) &lt;op&gt; y</code>, and
+  optimizing them to do just <em>one</em> access into the dictionary, as well as optimizing repeated
+  string concatenations or various I/O patterns.</p>
+</li>
+<li>
+<p>Imperative <code>for</code>-loop lowering: loops of the form <code>for i in range(a, b, c)</code> (with <code>c</code> constant)
+  are lowered to a special IR node, since these loops are important for e.g. multithreading later.</p>
+</li>
+<li>
+<p>A series of program analyses whose results are available to later passes:</p>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Control_flow_analysis">Control-flow analysis</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Reaching_definition">Reaching definition analysis</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dominator_(graph_theory)">Dominator analysis</a></li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Escape_analysis">Capture (or escape) analysis</a></p>
+</li>
+<li>
+<p>Parallel loop lowering for multithreading or GPU</p>
+</li>
+<li>
+<p>Constant propagation and folding. This also includes dead code elimination and (in non-JIT mode)
+  global variable demotion.</p>
+</li>
+</ul>
+<p>Codon plugins can inject their own passes into the pipeline as well.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

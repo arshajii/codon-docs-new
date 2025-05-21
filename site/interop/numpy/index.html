@@ -1,0 +1,1544 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../jupyter/">
+      
+      
+        <link rel="next" href="../pyext/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Numpy - Codon Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/exaloop.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Codon Docs" class="md-header__button md-logo" aria-label="Codon Docs" data-md-component="logo">
+      
+  <img src="../../img/image.avif" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Codon Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Numpy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Codon Docs" class="md-nav__button md-logo" aria-label="Codon Docs" data-md-component="logo">
+      
+  <img src="../../img/image.avif" alt="logo">
+
+    </a>
+    Codon Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is Codon?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table of contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/ir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ir
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/parallel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parallel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pipelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Interop
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Interop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decorator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Decorator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jupyter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Numpy
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pyext
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Intro
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/differences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Differences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using codon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/collections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Collections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/extra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/ffi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ffi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/generators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Generators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/llvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Llvm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language/statics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Statics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>Codon ships with a feature-complete, fully-compiled native NumPy implementation.
+It uses the same API as NumPy, but re-implements everything in Codon itself,
+allowing for a range of optimizations and performance improvements. Codon-NumPy
+works with Codon's Python interoperability (you can transfer arrays to and from
+regular Python seamlessly), parallel backend (you can do array operations in
+parallel), and GPU backend (you can transfer arrays to and from the GPU seamlessly,
+and operate on them on the GPU).</p>
+<h1 id="getting-started">Getting started</h1>
+<p>Importing <code>numpy</code> in Codon will use Codon-NumPy (as opposed to
+<code>from python import numpy</code>, which would use standard NumPy):</p>
+<pre><code class="language-python">import numpy as np
+</code></pre>
+<p>We can then create and manipulate arrays just like in standard NumPy:</p>
+<pre><code class="language-python">x = np.arange(15, dtype=np.int64).reshape(3, 5)
+print(x)
+#   0   1   2   3   4
+#   5   6   7   8   9
+#  10  11  12  13  14
+
+x[1:, ::2] = -99
+#   0   1   2   3   4
+# -99   6 -99   8 -99
+# -99  11 -99  13 -99
+
+y = x.max(axis=1)
+print(y)
+#   4   8  13
+</code></pre>
+<p>In Codon-NumPy, any Codon type can be used as the array type. The <code>numpy</code>
+module has the same aliases that regular NumPy has, like <code>np.int64</code>,
+<code>np.float32</code> etc., but these simply refer to the regular Codon types.</p>
+<p _="%" endhint="endhint">{% hint style="warning" %}
+Using a string (e.g. <code>"i4"</code> or <code>"f8"</code>) for the dtype is not yet supported.</p>
+<h1 id="codon-array-type">Codon array type</h1>
+<p>The Codon array type is parameterized by the array data type ("<code>dtype</code>")
+and the array dimension ("<code>ndim</code>"). That means that, in Codon-NumPy, the
+array dimension is a property of the type, so a 1-d array is a different
+type than a 2-d array and so on:</p>
+<pre><code class="language-python">import numpy as np
+
+arr = np.array([[1.1, 2.2], [3.3, 4.4]])
+print(arr.__class__.__name__)  # ndarray[float,2]
+
+arr = np.arange(10)
+print(arr.__class__.__name__)  # ndarray[int,1]
+</code></pre>
+<p>The array dimension must also be known at compile-time. This allows the
+compiler to perform a wider range of optimizations on array operations.
+Usually, this has no impact on the code as the NumPy functions can
+determine input and output dimensions automatically. However, the dimension
+(and dtype) must be given when, for instance, reading arrays from disk:</p>
+<pre><code class="language-python"># 'dtype' argument specifies array type
+# 'ndim' argument specifies array dimension
+arr = np.load('arr.npy', dtype=float, ndim=3)
+</code></pre>
+<p>A very limited number of NumPy functions return an array whose dimension
+cannot be deduced from its inputs. One such example is <code>squeeze()</code>, which
+removes axes of length 1; since the number of axes of length 1 is not
+determinable at compile-time, this function requires an extra argument that
+indicates which axes to remove.</p>
+<h1 id="python-interoperability">Python interoperability</h1>
+<p>Codon's <code>ndarray</code> type supports Codon's standard Python interoperability API
+(i.e. <code>__to_py__</code> and <code>__from_py__</code> methods), so arrays can be transferred to
+and from Python seamlessly.</p>
+<h2 id="pytorch-integration">PyTorch integration</h2>
+<p>Because PyTorch tensors and NumPy arrays are interchangeable without copying
+data, it is easy to use Codon to efficiently manipulate or operate on PyTorch
+tensors. This can be achieved either via Codon's just-in-time (JIT) compilation
+mode or via its Python extension mode.</p>
+<h3 id="using-codon-jit">Using Codon JIT</h3>
+<p>Here is an example showing initializing a $$128 \times 128 \times 128$$ tensor
+$$A$$ such that $$A_{i,j,k} = i + j + k$$:</p>
+<pre><code class="language-python">import numpy as np
+import time
+import codon
+import torch
+
+@codon.jit
+def initialize(arr):
+    for i in range(128):
+        for j in range(128):
+            for k in range(128):
+                arr[i, j, k] = i + j + k
+
+# first call JIT-compiles; subsequent calls use cached JIT'd code
+tensor = torch.empty(128, 128, 128)
+initialize(tensor.numpy())
+
+tensor = torch.empty(128, 128, 128)
+t0 = time.time()
+initialize(tensor.numpy())
+t1 = time.time()
+
+print(tensor)
+print(t1 - t0, 'seconds')
+</code></pre>
+<p>Timings on an M1 MacBook Pro:</p>
+<ul>
+<li>Without <code>@codon.jit</code>: 0.1645 seconds</li>
+<li>With <code>@codon.jit</code>: 0.001485 seconds (<em>110x speedup</em>)</li>
+</ul>
+<p>For more information, see the <a href="../decorator/">Codon JIT docs</a>.</p>
+<h3 id="using-codon-python-extensions">Using Codon Python extensions</h3>
+<p>Codon can compile directly to a Python extension module, similar to writing a C
+extension for CPython or using Cython.</p>
+<p>Taking the same example, we can create a file <code>init.py</code>:</p>
+<pre><code class="language-python">import numpy as np
+import numpy.pybridge
+
+def initialize(arr: np.ndarray[np.float32, 3]):
+    for i in range(128):
+        for j in range(128):
+            for k in range(128):
+                arr[i, j, k] = i + j + k
+</code></pre>
+<p>Note that extension module functions need to specify argument types. In this case,
+the argument is a 3-dimensional array of type <code>float32</code>, which is expressed as
+<code>np.ndarray[np.float32, 3]</code> in Codon.</p>
+<p>Now we can use a setup script <code>setup.py</code> to create the extension module as described
+in the <a href="../pyext/">Codon Python extension docs</a>:</p>
+<pre><code class="language-bash">python3 setup.py build_ext --inplace  # setup.py from docs linked above
+</code></pre>
+<p>Finally, we can call the function from Python:</p>
+<pre><code class="language-python">from codon_initialize import initialize
+import torch
+
+tensor = torch.empty(128, 128, 128)
+initialize(tensor.numpy())
+print(tensor)
+</code></pre>
+<p>Note that there is no compilation happening at runtime with this approach. Instead,
+everything is compiled ahead of time when creating the extension. The timing is the same
+as the first approach.</p>
+<p>You can also use any Codon compilation flags with this approach by adding them to the
+<code>spawn</code> call in the setup script. For example, you can use the <code>-disable-exceptions</code>
+flag to disable runtime exceptions, which can yield performance improvements and generate
+more streamlined code.</p>
+<h1 id="parallel-processing">Parallel processing</h1>
+<p>Unlike Python, Codon has no global interpreter lock ("GIL") and supports full
+multithreading, meaning NumPy code can be parallelized. For example:</p>
+<pre><code class="language-python">import numpy as np
+import numpy.random as rnd
+import time
+
+N = 100000000
+n = 10
+
+rng = rnd.default_rng(seed=0)
+x = rng.normal(size=(N,n))
+y = np.empty(n)
+
+t0 = time.time()
+
+@par(num_threads=n)
+for i in range(n):
+    y[i] = x[:,i].sum()
+
+t1 = time.time()
+
+print(y)
+print(t1 - t0, 'seconds')
+# no par - 1.4s
+# w/ par - 0.4s
+</code></pre>
+<h1 id="gpu-processing">GPU processing</h1>
+<p>Codon-NumPy supports seamless GPU processing: arrays can be passed to and
+from the GPU, and array operations can be performed on the GPU using Codon's
+GPU backend. Here's an example that computes the Mandelbrot set:</p>
+<pre><code class="language-python">import numpy as np
+import gpu
+
+MAX    = 1000  # maximum Mandelbrot iterations
+N      = 4096  # width and height of image
+pixels = np.empty((N, N), int)
+
+def scale(x, a, b):
+    return a + (x/N)*(b - a)
+
+@gpu.kernel
+def mandelbrot(pixels):
+    i = (gpu.block.x * gpu.block.dim.x) + gpu.thread.x
+    j = (gpu.block.y * gpu.block.dim.y) + gpu.thread.y
+    c = complex(scale(j, -2.00, 0.47), scale(i, -1.12, 1.12))
+    z = 0j
+    iteration = 0
+
+    while abs(z) &lt;= 2 and iteration &lt; MAX:
+        z = z**2 + c
+        iteration += 1
+
+    pixels[i, j] = 255 * iteration/MAX
+
+mandelbrot(pixels, grid=(N//32, N//32), block=(32, 32))
+</code></pre>
+<p>Here is the same code using GPU-parallelized <code>for</code>-loops:</p>
+<pre><code class="language-python">import numpy as np
+import gpu
+
+MAX    = 1000  # maximum Mandelbrot iterations
+N      = 4096  # width and height of image
+pixels = np.empty((N, N), int)
+
+def scale(x, a, b):
+    return a + (x/N)*(b - a)
+
+@par(gpu=True, collapse=2)  # &lt;--
+for i in range(N):
+    for j in range(N):
+        c = complex(scale(j, -2.00, 0.47), scale(i, -1.12, 1.12))
+        z = 0j
+        iteration = 0
+
+        while abs(z) &lt;= 2 and iteration &lt; MAX:
+            z = z**2 + c
+            iteration += 1
+
+        pixels[i, j] = 255 * iteration/MAX
+</code></pre>
+<h1 id="linear-algebra">Linear algebra</h1>
+<p>Codon-NumPy fully supports the NumPy linear algebra module which provides
+a comprehensive set of functions for linear algebra operations. Importing
+the linear algebra module, just like in standard NumPy:</p>
+<pre><code class="language-python">import numpy.linalg as LA
+</code></pre>
+<p>For example, the <code>eig()</code> function computes the eigenvalues and eigenvectors
+of a square matrix:</p>
+<pre><code class="language-python">eigenvalues, eigenvectors = LA.eig(np.diag((1, 2, 3)))
+print(eigenvalues)
+# 1.+0.j 2.+0.j 3.+0.j
+
+print(eigenvectors)
+# [[1.+0.j 0.+0.j 0.+0.j]
+#  [0.+0.j 1.+0.j 0.+0.j]
+#  [0.+0.j 0.+0.j 1.+0.j]]
+</code></pre>
+<p>Just like standard NumPy, Codon will use an optimized BLAS library under the
+hood to implement many linear algebra operations. This defaults to OpenBLAS
+on Linux and Apple's Accelerate framework on macOS.</p>
+<p>Because Codon supports full multithreading, it's possible to use outer-loop
+parallelism to perform linear algebra operations in parallel. Here's an example
+that multiplies several matrices in parallel:</p>
+<pre><code class="language-python">import numpy as np
+import numpy.random as rnd
+import time
+
+N = 5000
+n = 10
+rng = rnd.default_rng(seed=0)
+a = rng.normal(size=(n, N, N))
+b = rng.normal(size=(n, N, N))
+y = np.empty((n, N, N))
+t0 = time.time()
+
+@par(num_threads=n)
+for i in range(n):
+    y[i, :, :] = a[i, :, :] @ b[i, :, :]
+
+t1 = time.time()
+print(y.sum())
+print(t1 - t0, 'seconds')  # Python - 53s
+                           # Codon  -  6s
+</code></pre>
+<p _="%" endhint="endhint">{% hint style="warning" %}
+When using Codon's outer-loop parallelism, make sure to set the environment
+variable <code>OPENBLAS_NUM_THREADS</code> to 1 (i.e. <code>export OPENBLAS_NUM_THREADS=1</code>)
+to avoid conflicts with OpenBLAS multithreading.</p>
+<h1 id="numpy-specific-compiler-optimizations">NumPy-specific compiler optimizations</h1>
+<p>Codon includes compiler passes that optimize NumPy code through methods like
+operator fusion, which combine distinct operations so that they can be executed
+during a single pass through the argument arrays, saving both execution time and
+memory (since intermediate arrays no longer need to be allocated).</p>
+<p>To showcase this, here's a simple NumPy program that approximates $$\pi$$.
+The code below generates two random vectors $$x$$ and $$y$$ with entries in the
+range $$[0, 1)$$ and computes the fraction of pairs of points that lie in the
+circle of radius $$0.5$$ centered at $$(0.5, 0.5)$$, which is approximately
+$$\pi \over 4$$.</p>
+<pre><code class="language-python">import time
+import numpy as np
+
+rng = np.random.default_rng(seed=0)
+x = rng.random(500_000_000)
+y = rng.random(500_000_000)
+
+t0 = time.time()
+# pi ~= 4 x (fraction of points in circle)
+pi = ((x-1)**2 + (y-1)**2 &lt; 1).sum() * (4 / len(x))
+t1 = time.time()
+
+print(pi)
+print(t1 - t0, 'seconds')
+</code></pre>
+<p>The expression <code>(x-1)**2 + (y-1)**2 &lt; 1</code> gets fused by Codon so that it is
+executed in just a single pass over the <code>x</code> and <code>y</code> arrays, rather than in
+multiple passes for each sub-expression <code>x-1</code>, <code>y-1</code> etc. as is the case with
+standard NumPy.</p>
+<p>Here are the resulting timings on an M1 MacBook Pro:</p>
+<ul>
+<li>Python / standard NumPy: 2.4 seconds</li>
+<li>Codon: 0.42 seconds (<em>6x speedup</em>)</li>
+</ul>
+<p>You can display information about fused expressions by using the <code>-npfuse-verbose</code>
+flag of <code>codon</code>, as in <code>codon run -release -npfuse-verbose pi.py</code>. Here's the
+output for the program above:</p>
+<pre><code>Optimizing expression at pi.py:10:7
+lt &lt;array[bool, 1]&gt; [cost=6]
+  add &lt;array[f64, 1]&gt; [cost=5]
+    pow &lt;array[f64, 1]&gt; [cost=2]
+      sub &lt;array[f64, 1]&gt; [cost=1]
+        a0 &lt;array[f64, 1]&gt;
+        a1 &lt;i64&gt;
+      a2 &lt;i64&gt;
+    pow &lt;array[f64, 1]&gt; [cost=2]
+      sub &lt;array[f64, 1]&gt; [cost=1]
+        a3 &lt;array[f64, 1]&gt;
+        a4 &lt;i64&gt;
+      a5 &lt;i64&gt;
+  a6 &lt;i64&gt;
+
+-&gt; static fuse:
+lt &lt;array[bool, 1]&gt; [cost=6]
+  add &lt;array[f64, 1]&gt; [cost=5]
+    pow &lt;array[f64, 1]&gt; [cost=2]
+      sub &lt;array[f64, 1]&gt; [cost=1]
+        a0 &lt;array[f64, 1]&gt;
+        a1 &lt;i64&gt;
+      a2 &lt;i64&gt;
+    pow &lt;array[f64, 1]&gt; [cost=2]
+      sub &lt;array[f64, 1]&gt; [cost=1]
+        a3 &lt;array[f64, 1]&gt;
+        a4 &lt;i64&gt;
+      a5 &lt;i64&gt;
+  a6 &lt;i64&gt;
+</code></pre>
+<p>As shown, the optimization pass employs a cost model to decide how to best handle
+a given expression, be it by fusing or evaluating sequentially. You can adjust the
+fusion cost thresholds via the following flags:</p>
+<ul>
+<li><code>-npfuse-always &lt;cost1&gt;</code>: Expression cost below which to always fuse a given
+  expression (default: <code>10</code>).</li>
+<li><code>-npfuse-never &lt;cost2&gt;</code>: Expression cost above which (&gt;) to never fuse a given
+  expression (default: <code>50</code>).</li>
+</ul>
+<p>Given an expression cost <code>C</code>, the logic implemented in the pass is to:</p>
+<ul>
+<li>Always fuse expressions where <code>C &lt;= cost1</code>.</li>
+<li>Fuse expressions where <code>cost1 &lt; C &lt;= cost2</code> if there is no broadcasting involved.</li>
+<li>Never fuse expressions where <code>C &gt; cost2</code> and instead evaluate them sequentially.</li>
+</ul>
+<p>This logic is applied recursively to a given expression to determine the optimal
+evaluation strategy.</p>
+<p>You can disable these optimizations altogether by disabling the corresponding
+compiler pass via the flag <code>-disable-opt core-numpy-fusion</code>.</p>
+<h1 id="io">I/O</h1>
+<p>Codon-NumPy supports most of NumPy's I/O API. One important difference, however,
+is that I/O functions must specify the dtype and dimension of arrays being read,
+since Codon-NumPy array types are parameterized by dtype and dimension:</p>
+<pre><code class="language-python">import numpy as np
+
+a = np.arange(27, dtype=np.int16).reshape(3, 3, 3)
+np.save('arr.npy', a)
+
+# Notice the 'dtype' and 'ndim' arguments:
+b = np.load('arr.npy', dtype=np.int16, ndim=3)
+</code></pre>
+<p>Writing arrays has no such requirement.</p>
+<h1 id="datetimes">Datetimes</h1>
+<p>Codon-NumPy fully supports NumPy's datetime types: <code>datetime64</code> and <code>timedelta64</code>.
+One difference from standard NumPy is how these types are specified. Here's an example:</p>
+<pre><code class="language-python"># datetime64 type with units of &quot;1 day&quot;
+# same as &quot;dtype='datetime64[D]'&quot; in standard NumPy
+dt = np.array(['2020-01-02', '2021-09-15', '2022-07-01'],
+              dtype=np.datetime64['D', 1])
+
+# timedelta64 type with units of &quot;15 minutes&quot;
+# same as &quot;dtype='timedelta64[15m]'&quot; in standard NumPy
+td = np.array([100, 200, 300], dtype=np.timedelta64['m', 15])
+</code></pre>
+<h1 id="passing-array-data-to-cc">Passing array data to C/C++</h1>
+<p>You can pass an <code>ndarray</code>'s underlying data pointer to a C/C++ function by using
+the <code>data</code> attribute of the array. For example:</p>
+<pre><code class="language-python">from C import foo(p: Ptr[float], n: int)
+
+arr = np.ndarray([1.0, 2.0, 3.0])
+foo(arr.data, arr.size)
+</code></pre>
+<p>Of course, it's the caller's responsibility to make sure the array is contiguous
+as needed and/or pass additional shape or stride information. See the
+<a href="../cpp/">C interoperability</a> docs for more information.</p>
+<h2 id="array-abi">Array ABI</h2>
+<p>The <code>ndarray[dtype, ndim]</code> data structure has three fields, in the following order:</p>
+<ul>
+<li><code>shape</code>: length-<code>ndim</code> tuple of non-negative 64-bit integers representing the array
+  shape</li>
+<li><code>strides</code>: length-<code>ndim</code> tuple of 64-bit integers representing the stride in bytes
+  along each axis of the array</li>
+<li><code>data</code>: pointer of type <code>dtype</code> to the array's data</li>
+</ul>
+<p>For example, <code>ndarray[np.float32, 3]</code> would correspond to the following C structure:</p>
+<pre><code class="language-c">struct ndarray_float32_3 {
+  int64_t shape[3];
+  int64_t strides[3];
+  float *data;
+};
+</code></pre>
+<p>This can be used to pass an entire <code>ndarray</code> object to a C function without breaking
+it up into its constituent components.</p>
+<h1 id="performance-tips">Performance tips</h1>
+<h2 id="array-layouts">Array layouts</h2>
+<p>As with standard NumPy, Codon-NumPy performs best when array data is contiguous in
+memory, ideally in row-major order (also called "C order"). Most NumPy functions will
+return C-order arrays, but operations like slicing and transposing arrays can alter
+contiguity. You can use <code>numpy.ascontiguousarray()</code> to create a contiguous array from
+an arbitrary array.</p>
+<h2 id="linux-huge-pages">Linux huge pages</h2>
+<p>When working with large arrays on Linux, enabling
+<a href="https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html">transparent hugepages</a>
+can result in significant performance improvements.</p>
+<p>You can check if transparent hugepages are enabled via</p>
+<pre><code class="language-bash">cat /sys/kernel/mm/transparent_hugepage/enabled
+</code></pre>
+<p>and you can enable them via</p>
+<pre><code class="language-bash">echo &quot;always&quot; | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+</code></pre>
+<h2 id="disabling-exceptions">Disabling exceptions</h2>
+<p>By default, Codon performs various validation checks at runtime (e.g. bounds checks when
+indexing an array) just like standard NumPy, and raises an exception if they fail. If
+you know your program will not raise or catch any exceptions, you can disable these
+checks through the <code>-disable-exceptions</code> compiler flag.</p>
+<p>Note that when using this flag, raising an exception will terminate the process with a
+<code>SIGTRAP</code>.</p>
+<h2 id="fast-math">Fast-math</h2>
+<p>You can enable "fast-math" optimizations via the <code>-fast-math</code> compiler flag. It is
+advisable to <strong>use this flag with caution</strong> as it changes floating point semantics and
+makes assumptions regarding <code>inf</code> and <code>nan</code> values. For more information, consult LLVM's
+documentation on <a href="https://llvm.org/docs/LangRef.html#fast-math-flags">fast-math flags</a>.</p>
+<h1 id="not-yet-supported">Not-yet-supported</h1>
+<p>The following features of NumPy are not yet supported, but are planned for the future:
+- String operations
+- Masked arrays
+- Polynomials</p>
+<p>A few miscellaneous Python-specific functions like <code>get_include()</code> are also not
+supported, as they are not applicable in Codon.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
