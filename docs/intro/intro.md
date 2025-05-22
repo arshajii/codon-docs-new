@@ -1,3 +1,7 @@
+---
+tags:
+  - Introduction
+---
 # Using `codon`
 
 The `codon` program can directly `run` Codon source in JIT mode:

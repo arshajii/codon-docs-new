@@ -1,3 +1,7 @@
+---
+tags:
+  - Interoperability
+---
 Codon includes a build mode called `pyext` for generating
 [Python extensions](https://docs.python.org/3/extending/extending.html)
 (which are traditionally written in C, C++ or Cython):
@@ -11,10 +15,9 @@ codon build -pyext extension.codon  # add -release to enable optimizations
 - `-o <output object>`: Writes the compilation result to the specified file.
 - `-module <module name>`: Specifies the generated Python module's name.
 
-{% hint style="warning" %}
-It is recommended to use the `pyext` build mode with Python versions 3.9
-and up.
-{% endhint %}
+> **⚠️ Warning:**
+> It is recommended to use the `pyext` build mode with Python versions 3.9
+> and up.
 
 # Functions
 

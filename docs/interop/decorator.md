@@ -1,3 +1,7 @@
+---
+tags:
+  - Interoperability
+---
 Codon includes a Python package called `codon` that allows
 functions or methods within Python codebases to be compiled and
 executed by Codon's JIT. The `codon` library can be installed
@@ -56,22 +60,19 @@ outputs:
 [codon]  8392 | took 0.998633861541748 seconds
 ```
 
-{% hint style="info" %}
-`@par` (to parallelize `for`-loops) can be used in annotated functions
-via a leading underscore: `_@par`.
-{% endhint %}
+> **ℹ️ Info:**
+> `@par` (to parallelize `for`-loops) can be used in annotated functions
+> via a leading underscore: `_@par`.
 
-{% hint style="warning" %}
-Changes made to objects in a JIT'd function will not be reflected
-in the host Python application, since objects passed to Codon are
-*converted* to Codon-native types. If objects need to be modified,
-consider returning any necessary values and performing modifications
-in Python.
-{% endhint %}
+> **⚠️ Warning:**
+> Changes made to objects in a JIT'd function will not be reflected
+> in the host Python application, since objects passed to Codon are
+> *converted* to Codon-native types. If objects need to be modified,
+> consider returning any necessary values and performing modifications
+> in Python.
 
-{% hint style="warning" %}
-Polymorphism and inheritance are not yet supported in JIT mode.
-{% endhint %}
+> **⚠️ Warning:**
+> Polymorphism and inheritance are not yet supported in JIT mode.
 
 
 # Type conversions
@@ -145,9 +146,8 @@ This also allows imported Python modules to be accessed by Codon. All `pyvars`
 are passed as Python objects. Note that JIT'd functions can call each other
 by default.
 
-{% hint style="info" %}
-`pyvars` takes in variable names as strings, not the variables themselves.
-{% endhint %}
+> **ℹ️ Info:**
+> `pyvars` takes in variable names as strings, not the variables themselves.
 
 # Debugging
 

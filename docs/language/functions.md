@@ -1,3 +1,7 @@
+---
+tags:
+  - Language
+---
 Functions are defined as follows:
 
 ``` python
@@ -111,9 +115,8 @@ foo(4, int)  # prints 4, returns 1
 foo(4, str)  # error: return type is str, but foo returns int!
 ```
 
-{% hint style="info" %}
-Coming from C++? `foo(x: List[T], T: type): ...` is roughly the same as
-`template<typename T, typename U> U foo(T x) { ... }`.
-{% endhint %}
+> **ℹ️ Info:**
+> Coming from C++? `foo(x: List[T], T: type): ...` is roughly the same as
+> `template<typename T, typename U> U foo(T x) { ... }`.
 
 Generic type parameters are an optional way to enforce various typing constraints.

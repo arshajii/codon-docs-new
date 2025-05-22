@@ -1,3 +1,7 @@
+---
+tags:
+  - Language
+---
 Codon supports a number of additional types that are not present
 in plain Python.
 
@@ -45,10 +49,9 @@ foo(p)             # pass pointer to C function
 The `cobj` alias corresponds to `void*` in C and represents a generic
 C or C++ object.
 
-{% hint style="warning" %}
-Using pointers directly circumvents any runtime checks, so dereferencing a
-null pointer, for example, will cause a segmentation fault just like in C.
-{% endhint %}
+> **⚠️ Warning:**
+> Using pointers directly circumvents any runtime checks, so dereferencing a
+> null pointer, for example, will cause a segmentation fault just like in C.
 
 # Static arrays
 

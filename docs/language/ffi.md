@@ -1,3 +1,7 @@
+---
+tags:
+  - Language
+---
 Codon can seamlessly call functions from C and Python:
 
 ``` python
@@ -25,10 +29,9 @@ foo = mymethod(1, 2.2)
 foo2 = my2(4, 3.2)
 ```
 
-{% hint style="warning" %}
-When importing C functions, you must explicitly specify
-argument and return types.
-{% endhint %}
+> **⚠️ Warning:**
+> When importing C functions, you must explicitly specify
+> argument and return types.
 
 How about Python? If you have set the `CODON_PYTHON` environment
 variable to point to the Python library, you can do:

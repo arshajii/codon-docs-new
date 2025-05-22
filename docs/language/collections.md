@@ -1,6 +1,10 @@
+---
+tags:
+  - Language
+---
 Collections are largely the same as in Python:
 
-``` python
+``` py
 l = [1, 2, 3]                         # type: List[int]; a list of integers
 s = {1.1, 3.3, 2.2, 3.3}              # type: Set[float]; a set of floats
 d = {1: 'hi', 2: 'ola', 3: 'zdravo'}  # type: Dict[int, str]; a dictionary of int to str
@@ -24,9 +28,8 @@ for i in range(1_000_000):
     squares.append(i ** 2)
 ```
 
-{% hint style="info" %}
-Dictionaries and sets are unordered and are based on [klib](https://github.com/attractivechaos/klib).
-{% endhint %}
+> **ℹ️ Info:**
+> Dictionaries and sets are unordered and are based on [klib](https://github.com/attractivechaos/klib).
 
 # Comprehensions
 
@@ -84,9 +87,8 @@ for i in v:
     print(i)
 ```
 
-{% hint style="warning" %}
-Just like in Python, tuples are immutable, so `a = (1, 2); a[1] = 1` will not compile.
-{% endhint %}
+> **⚠️ Warning:**
+> Just like in Python, tuples are immutable, so `a = (1, 2); a[1] = 1` will not compile.
 
 Codon supports most of Python's tuple unpacking syntax:
 

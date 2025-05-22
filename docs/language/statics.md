@@ -1,3 +1,7 @@
+---
+tags:
+  - Language
+---
 Sometimes, certain values or conditions need to be known
 at compile time. For example, the bit width `N` of an
 integer type `Int[N]`, or the size `M` of a static array

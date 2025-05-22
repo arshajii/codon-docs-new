@@ -1,3 +1,7 @@
+---
+tags:
+  - Language
+---
 If you know Python, you already know 99% of Codon. This section
 covers the Codon language as well as some of the key differences
 and additional features on top of Python.
@@ -237,11 +241,10 @@ finally:
     print("whatever, it's done")
 ```
 
-{% hint style="warning" %}
-Right now, Codon cannot catch multiple exceptions in one statement. Thus
-`catch (Exc1, Exc2, Exc3) as var` will not compile, since the type of `var`
-needs to be known ahead of time.
-{% endhint %}
+> **⚠️ Warning:**
+> Right now, Codon cannot catch multiple exceptions in one statement. Thus
+> `catch (Exc1, Exc2, Exc3) as var` will not compile, since the type of `var`
+> needs to be known ahead of time.
 
 If you have an object that implements `__enter__` and `__exit__` methods
 to manage its lifetime (say, a `File`), you can use a `with` statement

@@ -1,3 +1,7 @@
+---
+tags:
+  - Introduction
+---
 While Codon's syntax and semantics are nearly identical
 to Python's, there are some notable differences that are
 worth mentioning. Most of these design decisions were made

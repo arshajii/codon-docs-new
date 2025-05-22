@@ -1,3 +1,7 @@
+---
+tags:
+  - Language
+---
 Codon supports classes just like Python. However, you must declare
 class members and their types in the preamble of each class (like
 you would do with Python's dataclasses):
@@ -79,10 +83,9 @@ class NamedPoint(Point):
         self.name = name
 ```
 
-{% hint style="warning" %}
-Currently, inheritance in Codon is still under active development.
-Treat it as a beta feature.
-{% endhint %}
+> **⚠️ Warning:**
+> Currently, inheritance in Codon is still under active development.
+> Treat it as a beta feature.
 
 # Named tuples
 
@@ -160,9 +163,8 @@ print(5 + '4')  # 9
 Note that all type extensions are performed strictly at compile time and
 incur no runtime overhead.
 
-{% hint style="warning" %}
-Type extensions in Codon are also a beta feature.
-{% endhint %}
+> **⚠️ Warning:**
+> Type extensions in Codon are also a beta feature.
 
 
 # Magic methods

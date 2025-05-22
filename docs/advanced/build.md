@@ -1,3 +1,7 @@
+---
+tags:
+  - Advanced
+---
 Unless you really need to build Codon for whatever reason, we strongly
 recommend using pre-built binaries if possible.
 
@@ -60,11 +64,10 @@ Additionally, a number of shared libraries are produced in `install/lib/codon`:
 - `libcodonrt`: The runtime library used during execution.
 - `libomp`: OpenMP runtime used to execute parallel code.
 
-{% hint style="warning" %}
-Make sure the `llvm-config` being used corresponds to Codon's LLVM. You can also use
-`-DLLVM_DIR=llvm-project/install/lib/cmake/llvm` on the first `cmake` command if you
-followed the instructions above for compiling LLVM.
-{% endhint %}
+> **⚠️ Warning:**
+> Make sure the `llvm-config` being used corresponds to Codon's LLVM. You can also use
+> `-DLLVM_DIR=llvm-project/install/lib/cmake/llvm` on the first `cmake` command if you
+> followed the instructions above for compiling LLVM.
 
 # GPU support
 

@@ -1,3 +1,7 @@
+---
+tags:
+  - Interoperability
+---
 Calling C/C++ from Codon is quite easy with `from C import`, but Codon
 can also be called from C/C++ code. To make a Codon function externally
 visible, simply annotate it with `@export`:

@@ -1,3 +1,7 @@
+---
+tags:
+  - Advanced
+---
 Codon supports GPU programming through a native GPU backend.
 Currently, only Nvidia devices are supported.
 Here is a simple example:
@@ -93,10 +97,9 @@ couple notable exceptions:
   `re` module (which uses an external regex library) or the `os`
   module.
 
-{% hint style="warning" %}
-The GPU module is under active development. APIs and semantics
-might change between Codon releases.
-{% endhint %}
+> **⚠️ Warning:**
+> The GPU module is under active development. APIs and semantics
+> might change between Codon releases.
 
 # Invoking the kernel
 

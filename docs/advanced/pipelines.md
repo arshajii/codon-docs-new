@@ -1,3 +1,7 @@
+---
+tags:
+  - Advanced
+---
 Codon extends the core Python language with a pipe operator. You can
 chain multiple functions and generators to form a pipeline. Pipeline
 stages can be regular functions or generators. In the case of standard
@@ -38,13 +42,12 @@ Codon will chain anything that implements `__iter__`, and the compiler
 will optimize out generators whenever possible. Combinations of pipes
 and generators can be used to implement efficient streaming pipelines.
 
-{% hint style="warning" %}
-The Codon compiler may perform optimizations that change the order of
-elements passed through a pipeline. Therefore, it is best to not rely on
-order when using pipelines. If order needs to be maintained, consider
-using a regular loop or passing an index alongside each element sent
-through the pipeline.
-{% endhint %}
+> **⚠️ Warning:**
+> The Codon compiler may perform optimizations that change the order of
+> elements passed through a pipeline. Therefore, it is best to not rely on
+> order when using pipelines. If order needs to be maintained, consider
+> using a regular loop or passing an index alongside each element sent
+> through the pipeline.
 
 # Parallel pipelines
 
