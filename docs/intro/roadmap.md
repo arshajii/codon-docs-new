@@ -1,14 +1,12 @@
----
-tags:
-  - Introduction
----
+## Summary
+
 Codon's goal is to be as close to CPython as possible while still
 being fully statically compilable. While Codon already supports
 much of Python, there is still much to be done to fully realize
 its potential. Here is a high-level roadmap of the things we want
 to add, implement or explore.
 
-# Core features
+## Core features
 
 - Type system improvements:
   - First-class types and compile-time metaclasses
@@ -55,7 +53,7 @@ to add, implement or explore.
   - Direct C++ interoperability via Clang
   - R interoperability
 
-# Libraries
+## Libraries
 
 Currently, missing Python functionality can be easily accessed via a
 `from python import foo` statement, which is sufficient in most cases
@@ -81,7 +79,7 @@ modules natively:
 
 - Python's testing infrastructure
 
-# Infrastructure & Tools
+## Infrastructure & Tools
 
 - Windows support
 
@@ -104,12 +102,12 @@ modules natively:
 
 - Plugins for Visual Studio Code, Vim, Emacs and so on
 
-# Documentation
+## Documentation
 
 - Fully document major differences with CPython
 - Document Codon IR API, with guides and tutorials
 - Document all supported modules
 
-# Nice to have
+## Nice to have
 
 - Implement Codon in Codon

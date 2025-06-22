@@ -1,8 +1,7 @@
----
-tags:
-  - Introduction
----
-# Using `codon`
+## Summary
+We give a short overview of how to get up and running using Codon.
+
+## Using `codon`
 
 The `codon` program can directly `run` Codon source in JIT mode:
 

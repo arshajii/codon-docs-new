@@ -1,8 +1,8 @@
----
-tags:
-  - Introduction
----
-# Technical
+## Summary
+
+Here are some of the most frequently asked questions we get about Codon. We periodically update this
+baased on question themes we get on our Discord Server - be sure to sign up and join
+the community - [Join here!](https://discord.gg/HeWRhagCmP)
 
 ## What is Codon?
 
@@ -117,22 +117,20 @@ network-bound will have the same bottlenecks in Codon.
 Please report any cases where Codon is noticeably slower than Python as bugs on our
 [issue tracker](https://github.com/exaloop/codon/issues).
 
-# Usage
-
 ## Is Codon free and open source?
 
 Yes, Codon is free and open source under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 Exaloop offers enterprise and custom solutions on top of Codon for a variety of applications, use cases and
 industries; please email [info@exaloop.io](mailto:info@exaloop.io) to learn more.
 
-# Contributing
+## Contributing
 
-## Does Codon accept outside contributions?
+### Does Codon accept outside contributions?
 
 Absolutely, we'd be delighted to accept any contributions in the form of issues, bug reports,
 feature requests or pull requests.
 
-## I want to contribute. Where do I start?
+### I want to contribute. Where do I start?
 
 If you have a specific feature or use case in mind, here is a quick breakdown of the codebase
 to help provide a sense of where to look first:
@@ -151,7 +149,7 @@ to help provide a sense of where to look first:
 You can also take a look at some of the [open issues](https://github.com/exaloop/codon/issues). If you
 have any question or suggestions, please feel free to ask in [the forum](https://github.com/exaloop/codon/discussions).
 
-## Is there a Contributor License Agreement (CLA)?
+### Is there a Contributor License Agreement (CLA)?
 
 Yes, there is a CLA that is required to be agreed to before any pull requests are merged.
 Please see [exaloop.io/legal/cla](https://exaloop.io/legal/cla) for more information. To agree to
