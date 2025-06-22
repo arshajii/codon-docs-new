@@ -45,7 +45,7 @@ up with best possible performance in mind.*
 
 Download and install Codon with this command:
 
-```bash
+``` bash
 /bin/bash -c "$(curl -fsSL https://exaloop.io/install.sh)"
 ```
 
@@ -79,7 +79,7 @@ print(f'Computed fib(40) = {ans} in {t1 - t0} seconds.')
 
 ... run through Python and Codon:
 
-```
+``` python
 $ python3 fib.py
 Computed fib(40) = 102334155 in 17.979357957839966 seconds.
 $ codon run -release fib.py
@@ -90,7 +90,7 @@ Computed fib(40) = 102334155 in 0.275645 seconds.
 
 You can import and use any Python package from Codon via `from python import`. For example:
 
-```python
+``` python
 from python import matplotlib.pyplot as plt
 data = [x**2 for x in range(10)]
 plt.plot(data)
@@ -106,7 +106,7 @@ Codon supports native multithreading via [OpenMP](https://www.openmp.org/). The 
 in the code below tells the compiler to parallelize the following `for`-loop, in this case using
 a dynamic schedule, chunk size of 100, and 16 threads.
 
-```python
+``` python
 from sys import argv
 
 def is_prime(n):
@@ -133,7 +133,7 @@ reduction to avoid race conditions. Learn more in the [multithreading docs](adva
 Codon also supports writing and executing GPU kernels. Here's an example that computes the
 [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set):
 
-```python
+``` python
 import gpu
 
 MAX    = 1000  # maximum Mandelbrot iterations
@@ -189,7 +189,7 @@ print(f'Computed pi~={pi:.4f} in {t1 - t0:.2f} sec')
 
 ... run through Python and Codon:
 
-```
+``` bash
 $ python3 pi.py
 Computed pi~=3.1417 in 2.25 sec
 $ codon run -release pi.py
