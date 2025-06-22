@@ -1,7 +1,4 @@
----
-tags:
-  - Language
----
+## Summary
 Codon allows inline LLVM IR via the `@llvm` annotation:
 
 ``` python
@@ -41,7 +38,7 @@ def popcnt(n: int) -> int:
 print(popcnt(42))  # 3
 ```
 
-# Annotations
+## Annotations
 
 Sometimes it can be helpful to annotate `@llvm` functions to give
 the compiler more information as to how they behave. Codon has

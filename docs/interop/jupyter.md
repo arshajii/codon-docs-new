@@ -1,7 +1,4 @@
----
-tags:
-  - Interoperability
----
+## Summary
 Codon ships with a kernel that can be used by Jupyter, invoked
 with the `codon jupyter ...` subcommand.
 
@@ -19,6 +16,8 @@ the directory `/path/to/jupyter/kernels/codon/`:
     "language": "python"
 }
 ```
+
+## Plugins
 
 Plugins can also optionally be specified, as in:
 

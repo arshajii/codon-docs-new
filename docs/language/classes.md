@@ -1,7 +1,5 @@
----
-tags:
-  - Language
----
+## Summary
+
 Codon supports classes just like Python. However, you must declare
 class members and their types in the preamble of each class (like
 you would do with Python's dataclasses):
@@ -87,7 +85,7 @@ class NamedPoint(Point):
 > Currently, inheritance in Codon is still under active development.
 > Treat it as a beta feature.
 
-# Named tuples
+## Named tuples
 
 Codon also supports pass-by-value types via the `@tuple` annotation, which are
 effectively named tuples (equivalent to Python's `collections.namedtuple`):
@@ -128,7 +126,7 @@ p = Point()             # p is (0, 1)
 print(p.some_method())  # 1
 ```
 
-# Type extensions
+## Type extensions
 
 Suppose you have a class that lacks a method or an operator that might
 be really useful. Codon provides an `@extend` annotation that allows
@@ -167,7 +165,7 @@ incur no runtime overhead.
 > Type extensions in Codon are also a beta feature.
 
 
-# Magic methods
+## Magic methods
 
 Here is a list of useful magic methods that you might want to add and
 overload:

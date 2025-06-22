@@ -1,11 +1,8 @@
----
-tags:
-  - Advanced
----
+## Summary
 Unless you really need to build Codon for whatever reason, we strongly
 recommend using pre-built binaries if possible.
 
-# Dependencies
+## Dependencies
 
 Codon uses an LLVM fork based on LLVM 17. To build it, you can do:
 
@@ -27,7 +24,7 @@ You can also add `-DLLVM_ENABLE_PROJECTS=clang` if you do not have `clang` insta
 on your system. We also recommend setting a local prefix during installation to
 avoid clashes with the system LLVM.
 
-# Build
+## Build
 
 Codon requires `libgfortran`, the parent directory of which must be specified via the
 `CODON_SYSTEM_LIBRARIES` environment variable. For example, on macOS, with a
@@ -69,11 +66,11 @@ Additionally, a number of shared libraries are produced in `install/lib/codon`:
 > `-DLLVM_DIR=llvm-project/install/lib/cmake/llvm` on the first `cmake` command if you
 > followed the instructions above for compiling LLVM.
 
-# GPU support
+## GPU support
 
 Add `-DCODON_GPU=ON` to the first `cmake` command above to enable GPU support.
 
-# Jupyter support
+## Jupyter support
 
 To enable Jupyter support, you will need to build the Jupyter plugin:
 

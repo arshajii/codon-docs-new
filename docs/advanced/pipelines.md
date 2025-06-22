@@ -1,7 +1,5 @@
----
-tags:
-  - Advanced
----
+## Summary
+
 Codon extends the core Python language with a pipe operator. You can
 chain multiple functions and generators to form a pipeline. Pipeline
 stages can be regular functions or generators. In the case of standard
@@ -49,7 +47,7 @@ and generators can be used to implement efficient streaming pipelines.
 > using a regular loop or passing an index alongside each element sent
 > through the pipeline.
 
-# Parallel pipelines
+## Parallel pipelines
 
 CPython and many other implementations alike cannot take advantage of
 parallelism due to the infamous global interpreter lock, a mutex that

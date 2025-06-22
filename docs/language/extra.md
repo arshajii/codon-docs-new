@@ -1,11 +1,8 @@
----
-tags:
-  - Language
----
+## Summary
 Codon supports a number of additional types that are not present
 in plain Python.
 
-# Arbitrary-width integers
+## Arbitrary-width integers
 
 Codon's `int` type is a 64-bit signed integer. However, Codon
 supports arbitrary-width signed and unsigned integers:
@@ -23,13 +20,13 @@ variants:
 - `i32`/`u32`: signed/unsigned 32-bit integer
 - `i64`/`u64`: signed/unsigned 64-bit integer
 
-# 32-bit float
+## 32-bit float
 
 Codon's `float` type is a 64-bit floating point value. Codon
 also supports `float32` (or `f32` as a shorthand), representing
 a 32-bit floating point value (like C's `float`).
 
-# Pointers
+## Pointers
 
 Codon has a `Ptr[T]` type that represents a pointer to an object
 of type `T`. Pointers can be useful when interfacing with C. The
@@ -53,7 +50,7 @@ C or C++ object.
 > Using pointers directly circumvents any runtime checks, so dereferencing a
 > null pointer, for example, will cause a segmentation fault just like in C.
 
-# Static arrays
+## Static arrays
 
 The `__array__` keyword can be used to allocate static arrays on the stack:
 

@@ -1,7 +1,4 @@
----
-tags:
-  - Advanced
----
+## Summary
 Codon supports GPU programming through a native GPU backend.
 Currently, only Nvidia devices are supported.
 Here is a simple example:
@@ -101,7 +98,7 @@ couple notable exceptions:
 > The GPU module is under active development. APIs and semantics
 > might change between Codon releases.
 
-# Invoking the kernel
+## Invoking the kernel
 
 The kernel can be invoked via a simple call with added `grid` and
 `block` parameters. These parameters define the grid and block
@@ -117,7 +114,7 @@ The `grid` and `block` parameters can be one of:
 - Tuple of three integers `(x, y, z)`, giving dimensions `(x, y, z)`
 - Instance of `gpu.Dim3` as in `Dim3(x, y, z)`, specifying the three dimensions
 
-# GPU intrinsics
+## GPU intrinsics
 
 Codon's GPU module provides many of the same intrinsics that CUDA does:
 
@@ -131,7 +128,7 @@ Codon's GPU module provides many of the same intrinsics that CUDA does:
 The same applies for the `y` and `z` coordinates. The `*.dim` objects are instances
 of `gpu.Dim3`.
 
-# Math functions
+## Math functions
 
 All the functions in the `math` module are supported in kernel functions, and
 are automatically replaced with GPU-optimized versions:
@@ -156,14 +153,14 @@ gives:
 [0, 1, 1.41421, 1.73205, 2, 2.23607, 2.44949, 2.64575, 2.82843, 3]
 ```
 
-# Libdevice
+## Libdevice
 
 Codon uses [libdevice](https://docs.nvidia.com/cuda/libdevice-users-guide/index.html)
 for GPU-optimized math functions. The default libdevice path is
 `/usr/local/cuda/nvvm/libdevice/libdevice.10.bc`. An alternative path can be specified
 via the `-libdevice` compiler flag.
 
-# Working with raw pointers
+## Working with raw pointers
 
 By default, objects are converted entirely to their GPU counterparts, which have
 the same data layout as the original objects (although the Codon compiler might perform
@@ -195,7 +192,7 @@ print(c)  # output same as first snippet's
 meaning the corresponding kernel parameters will not have the full list API, instead
 having the more limited `Ptr` API (which primarily just supports indexing/assignment).
 
-# Object conversions
+## Object conversions
 
 A hidden API is used to copy objects to and from the GPU device. This API consists of
 two new *magic methods*:
@@ -213,7 +210,7 @@ back and forth from the GPU seamlessly. A user-defined class that makes use of r
 or other low-level constructs will have to define these methods for GPU use. Please refer
 to the `gpu` module for implementation examples.
 
-# `@par(gpu=True)`
+## `@par(gpu=True)`
 
 Codon's `@par` syntax can be used to seamlessly parallelize existing loops on the GPU,
 without needing to explicitly write them as kernels. For loop nests, the `collapse` argument
@@ -246,7 +243,7 @@ Note that the `gpu=True` option disallows shared variables (i.e. assigning out-o
 variables in the loop body) as well as reductions. The other GPU-specific restrictions
 described here apply as well.
 
-# Troubleshooting
+## Troubleshooting
 
 CUDA errors resulting in kernel abortion are printed, and typically arise from invalid
 code in the kernel, either via using exceptions or using unsupported modules/objects.

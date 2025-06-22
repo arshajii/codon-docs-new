@@ -1,12 +1,9 @@
----
-tags:
-  - Language
----
+## Summary
 If you know Python, you already know 99% of Codon. This section
 covers the Codon language as well as some of the key differences
 and additional features on top of Python.
 
-# Printing
+## Printing
 
 ``` python
 print('hello world')
@@ -15,7 +12,7 @@ from sys import stderr
 print('hello world', end='', file=stderr)
 ```
 
-# Comments
+## Comments
 
 ``` python
 # Codon comments start with "# 'and go until the end of the line
@@ -26,7 +23,7 @@ possible like this.
 """
 ```
 
-# Literals
+## Literals
 
 ``` python
 # Booleans
@@ -62,7 +59,7 @@ multiline string
 #   \xHHH (HHH is hex code), \OOO (OOO is octal code)
 ```
 
-# Assignments and operators
+## Assignments and operators
 
 ``` python
 a = 1 + 2              # this is 3
@@ -86,7 +83,7 @@ Here is the list of binary operators and each one's associated magic method:
   | `%`                | `__mod__`      | modulo                       |
   | `@`                | `__matmul__`   | matrix multiplication        |
   | `&`                | `__and__`      | bitwise and                  |
-  | <code>&vert;<code> | `__or__`       | bitwise or                   |
+  | <code>&vert;</code> | `__or__`       | bitwise or                   |
   | `^`                | `__xor__`      | bitwise xor                  |
   | `<<`               | `__lshift__`   | left bit shift               |
   | `>>`               | `__rshift__`   | right bit shift              |
@@ -109,9 +106,9 @@ Codon also has the following unary operators:
   | `-`      | `__neg__`    | unary negation   |
   | `not`    | none         | boolean negation |
 
-# Control flow
+## Control flow
 
-## Conditionals
+### Conditionals
 
 Codon supports the standard Python conditional syntax:
 
@@ -176,7 +173,7 @@ match list_foo():
 You can mix, match and chain match rules as long as the match type
 matches the expression type.
 
-## Loops
+### Loops
 
 Standard fare:
 
@@ -200,7 +197,7 @@ lists, sets, dictionaries, homogenous tuples, ranges, and many more
 types implement this method. If you need to implement one yourself,
 just keep in mind that `__iter__` is a generator and not a function.
 
-# Imports
+## Imports
 
 You can import functions and classes from another Codon module by doing:
 
@@ -222,7 +219,7 @@ bar_z()
 `import foo` looks for `foo.codon` or `foo/__init__.codon` in the
 current directory.
 
-# Exceptions
+## Exceptions
 
 Again, if you know how to do this in Python, you know how to do it in
 Codon:

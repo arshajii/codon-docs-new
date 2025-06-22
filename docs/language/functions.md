@@ -1,7 +1,5 @@
----
-tags:
-  - Language
----
+## Summary
+
 Functions are defined as follows:
 
 ``` python
@@ -77,7 +75,7 @@ foo(1, 2)  # prints "1 3"
 foo(1)     # raises ValueError, since b is None
 ```
 
-# Generics
+## Generics
 
 Codon emulates Python's lax runtime type checking using a technique known as
 *monomorphization*. If a function has an argument without a type definition,

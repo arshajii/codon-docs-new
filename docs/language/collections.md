@@ -1,7 +1,5 @@
----
-tags:
-  - Language
----
+## Summary
+
 Collections are largely the same as in Python:
 
 ``` py
@@ -31,7 +29,7 @@ for i in range(1_000_000):
 > **ℹ️ Info:**
 > Dictionaries and sets are unordered and are based on [klib](https://github.com/attractivechaos/klib).
 
-# Comprehensions
+## Comprehensions
 
 Comprehensions are a nifty, Pythonic way to create collections, and are fully
 supported by Codon:
@@ -52,7 +50,7 @@ g = (i for i in range(10))
 print(list(g))  # prints list of integers from 0 to 9, inclusive
 ```
 
-# Tuples
+## Tuples
 
 ``` python
 t = (1, 2.3, 'hi')  # type: Tuple[int, float, str]
@@ -113,7 +111,7 @@ print(x, y, pff, z)               # x is 1, y is 2, pff is an empty tuple --- ()
 s, *q = 'XYZ'  # works on strings as well; s is "X" and q is "YZ"
 ```
 
-# Strong typing
+## Strong typing
 
 Because Codon is strongly typed, these won't compile:
 

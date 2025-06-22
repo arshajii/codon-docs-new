@@ -1,7 +1,4 @@
----
-tags:
-  - Interoperability
----
+## Summary
 Codon includes a Python package called `codon` that allows
 functions or methods within Python codebases to be compiled and
 executed by Codon's JIT. The `codon` library can be installed
@@ -15,7 +12,7 @@ This library will attempt to use an installed version of Codon.
 If Codon is installed at a non-standard path, set the `CODON_DIR`
 environment variable to the installation path.
 
-# Using `@codon.jit`
+## Using `@codon.jit`
 
 The `@codon.jit` decorator causes the annotated function to be
 compiled by Codon, and automatically converts standard Python
@@ -75,7 +72,7 @@ outputs:
 > Polymorphism and inheritance are not yet supported in JIT mode.
 
 
-# Type conversions
+## Type conversions
 
 `@codon.jit` will attempt to convert any Python types that it can
 to native Codon types. The current conversion rules are as follows:
@@ -123,7 +120,7 @@ print(Foo(10).total())  # 1110
 it uses to construct a generic Codon class (specifically, a named tuple) to
 store the class's converted fields.
 
-# Passing globals to Codon
+## Passing globals to Codon
 
 Global variables, functions or modules can be passed to JIT'd functions through
 the `pyvars` argument to `@codon.jit`:
@@ -149,7 +146,7 @@ by default.
 > **ℹ️ Info:**
 > `pyvars` takes in variable names as strings, not the variables themselves.
 
-# Debugging
+## Debugging
 
 `@codon.jit` takes an optional `debug` parameter that can be used to print debug
 information such as generated Codon functions and data types:
@@ -181,7 +178,7 @@ def __codon_wrapped__sum_of_squares_0(args: cobj) -> cobj:
 20.229599999999998
 ```
 
-# Internals and performance tips
+## Internals and performance tips
 
 Under the hood, the `codon` module maintains an instance of the Codon JIT,
 which it uses to dynamically compile annotated Python functions. These functions

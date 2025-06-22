@@ -1,7 +1,4 @@
----
-tags:
-  - Advanced
----
+## Summary
 Codon supports parallelism and multithreading via OpenMP out of the box.
 Here\'s an example:
 
@@ -91,7 +88,7 @@ takes more time for larger integers, we use a dynamic schedule here.
 @par('schedule(dynamic, 100) num_threads(16)')
 ```
 
-# Different kinds of loops
+## Different kinds of loops
 
 `for`-loops can iterate over arbitrary generators, but OpenMP\'s
 parallel loop construct only applies to *imperative* for-loops of the
@@ -104,7 +101,7 @@ The Codon compiler also converts iterations over lists
 (`for a in some_list`) to imperative for-loops, meaning these loops can
 be executed using OpenMP\'s loop parallelism.
 
-# Custom reductions
+## Custom reductions
 
 Codon can automatically generate efficient reductions for `int` and
 `float` values. For other data types, user-defined reductions can be
@@ -134,7 +131,7 @@ for i in range(100):
 print(v)  # (x: 4950, y: 4950)
 ```
 
-# OpenMP constructs
+## OpenMP constructs
 
 All of OpenMP\'s API functions are accessible directly in Codon. For
 example:
@@ -174,6 +171,7 @@ for i in range(100):
     only_run_by_single_thread()
     run_ordered_by_iteration(i)
 ```
+## Finer-grained Locking
 
 For finer-grained locking, consider using the locks from the `threading`
 module:

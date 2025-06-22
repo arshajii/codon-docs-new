@@ -1,7 +1,4 @@
----
-tags:
-  - Interoperability
----
+## Summary
 Calling C/C++ from Codon is quite easy with `from C import`, but Codon
 can also be called from C/C++ code. To make a Codon function externally
 visible, simply annotate it with `@export`:
@@ -54,7 +51,7 @@ can either:
 - Add the library path to `LD_LIBRARY_PATH` (or `DYLD_LIBRARY_PATH` if
   using macOS): `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/lib/dir`.
 
-# Converting types
+## Converting types
 
 The following table shows the conversions between Codon and C/C++ types:
 

@@ -1,7 +1,5 @@
----
-tags:
-  - Language
----
+## Summary
+
 Sometimes, certain values or conditions need to be known
 at compile time. For example, the bit width `N` of an
 integer type `Int[N]`, or the size `M` of a static array
@@ -37,7 +35,7 @@ class MyInt[N: Static[int]]:
 x = MyInt[16](i16(42))
 ```
 
-# Static evaluation
+## Static evaluation
 
 In certain cases a program might need to check a particular
 type and perform different actions based on it. For example:

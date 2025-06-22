@@ -1,8 +1,4 @@
----
-tags:
-  - Introduction
----
-# What is Codon?
+## What is Codon?
 
 Codon is a high-performance Python implementation that compiles to native machine code without
 any runtime overhead. Typical speedups over vanilla Python are on the order of 10-100x or more, on
@@ -41,7 +37,7 @@ up with best possible performance in mind.*
  <img src="/img/codon-figure.svg" width="90%" alt="Codon figure"/>
 </p>
 
-# Quick start
+## Quick start
 
 Download and install Codon with this command:
 
@@ -58,7 +54,7 @@ After following the prompts, the `codon` command will be available to use. For e
 
 Many more options are available and described in [the docs](intro/intro.md).
 
-# Examples
+## Examples
 
 ## Basics
 

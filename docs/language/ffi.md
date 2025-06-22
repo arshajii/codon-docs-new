@@ -1,7 +1,5 @@
----
-tags:
-  - Language
----
+## Summary
+
 Codon can seamlessly call functions from C and Python:
 
 ``` python

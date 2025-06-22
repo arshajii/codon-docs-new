@@ -1,20 +1,37 @@
-site_name: Documentation
+site_name: Codon
+repo_url: https://github.com/exaloop/codon
+repo_name: exaloop/codon
 theme:
    name: material
-   logo: img/image.avif
+   logo: img/codon-white.png
    custom_dir: exaloop_theme
+   icon:
+    repo: fontawesome/brands/git-alt
    font:
      text: Open Sans
      code: Source Code Mono
    palette:
-     scheme: slate
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
    features:
     - content.code.copy
+    - search.suggest
+    - search.highlight
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.tabs
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-extra_css:
-  - stylesheets/exaloop.css
 markdown_extensions:
   - attr_list
   - md_in_html
@@ -30,12 +47,19 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 plugins:
   - tags
+  - typeset
+  - optimize
+  - search
 nav:
   - Home: index.md
   - Introduction:
-    - About Codon: about.md
     - Getting started: intro/intro.md
     - Frequently asked questions: intro/faq.md
     - Differences with Python: intro/differences.md
@@ -64,3 +88,4 @@ nav:
     - Pipelines: advanced/pipelines.md
     - Intermediate representation: advanced/ir.md
     - Building from source: advanced/build.md
+  - Blog: https://www.exaloop.io/blog

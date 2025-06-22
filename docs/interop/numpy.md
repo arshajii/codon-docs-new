@@ -1,7 +1,5 @@
----
-tags:
-  - Interoperability
----
+## Summary
+
 Codon ships with a feature-complete, fully-compiled native NumPy implementation.
 It uses the same API as NumPy, but re-implements everything in Codon itself,
 allowing for a range of optimizations and performance improvements. Codon-NumPy
@@ -10,7 +8,7 @@ regular Python seamlessly), parallel backend (you can do array operations in
 parallel), and GPU backend (you can transfer arrays to and from the GPU seamlessly,
 and operate on them on the GPU).
 
-# Getting started
+## Getting started
 Importing `numpy` in Codon will use Codon-NumPy (as opposed to
 `from python import numpy`, which would use standard NumPy):
 
@@ -44,7 +42,7 @@ module has the same aliases that regular NumPy has, like `np.int64`,
 > **⚠️ Warning:**
 > Using a string (e.g. `"i4"` or `"f8"`) for the dtype is not yet supported.
 
-# Codon array type
+## Codon array type
 The Codon array type is parameterized by the array data type ("`dtype`")
 and the array dimension ("`ndim`"). That means that, in Codon-NumPy, the
 array dimension is a property of the type, so a 1-d array is a different
@@ -78,7 +76,7 @@ removes axes of length 1; since the number of axes of length 1 is not
 determinable at compile-time, this function requires an extra argument that
 indicates which axes to remove.
 
-# Python interoperability
+## Python interoperability
 Codon's `ndarray` type supports Codon's standard Python interoperability API
 (i.e. `__to_py__` and `__from_py__` methods), so arrays can be transferred to
 and from Python seamlessly.
@@ -89,7 +87,7 @@ data, it is easy to use Codon to efficiently manipulate or operate on PyTorch
 tensors. This can be achieved either via Codon's just-in-time (JIT) compilation
 mode or via its Python extension mode.
 
-### Using Codon JIT
+## Using Codon JIT
 Here is an example showing initializing a $$128 \times 128 \times 128$$ tensor
 $$A$$ such that $$A_{i,j,k} = i + j + k$$:
 
@@ -126,7 +124,7 @@ Timings on an M1 MacBook Pro:
 
 For more information, see the [Codon JIT docs](../interop/decorator.md).
 
-### Using Codon Python extensions
+## Using Codon Python extensions
 Codon can compile directly to a Python extension module, similar to writing a C
 extension for CPython or using Cython.
 
@@ -174,7 +172,7 @@ You can also use any Codon compilation flags with this approach by adding them t
 flag to disable runtime exceptions, which can yield performance improvements and generate
 more streamlined code.
 
-# Parallel processing
+## Parallel processing
 Unlike Python, Codon has no global interpreter lock ("GIL") and supports full
 multithreading, meaning NumPy code can be parallelized. For example:
 
@@ -204,7 +202,7 @@ print(t1 - t0, 'seconds')
 # w/ par - 0.4s
 ```
 
-# GPU processing
+## GPU processing
 Codon-NumPy supports seamless GPU processing: arrays can be passed to and
 from the GPU, and array operations can be performed on the GPU using Codon's
 GPU backend. Here's an example that computes the Mandelbrot set:
@@ -264,7 +262,7 @@ for i in range(N):
         pixels[i, j] = 255 * iteration/MAX
 ```
 
-# Linear algebra
+## Linear algebra
 Codon-NumPy fully supports the NumPy linear algebra module which provides
 a comprehensive set of functions for linear algebra operations. Importing
 the linear algebra module, just like in standard NumPy:
@@ -323,7 +321,7 @@ print(t1 - t0, 'seconds')  # Python - 53s
 > variable `OPENBLAS_NUM_THREADS` to 1 (i.e. `export OPENBLAS_NUM_THREADS=1`)
 > to avoid conflicts with OpenBLAS multithreading.
 
-# NumPy-specific compiler optimizations
+## NumPy-specific compiler optimizations
 Codon includes compiler passes that optimize NumPy code through methods like
 operator fusion, which combine distinct operations so that they can be executed
 during a single pass through the argument arrays, saving both execution time and
@@ -419,7 +417,7 @@ evaluation strategy.
 You can disable these optimizations altogether by disabling the corresponding
 compiler pass via the flag `-disable-opt core-numpy-fusion`.
 
-# I/O
+## I/O
 Codon-NumPy supports most of NumPy's I/O API. One important difference, however,
 is that I/O functions must specify the dtype and dimension of arrays being read,
 since Codon-NumPy array types are parameterized by dtype and dimension:
@@ -436,7 +434,7 @@ b = np.load('arr.npy', dtype=np.int16, ndim=3)
 
 Writing arrays has no such requirement.
 
-# Datetimes
+## Datetimes
 Codon-NumPy fully supports NumPy's datetime types: `datetime64` and `timedelta64`.
 One difference from standard NumPy is how these types are specified. Here's an example:
 
@@ -451,7 +449,7 @@ dt = np.array(['2020-01-02', '2021-09-15', '2022-07-01'],
 td = np.array([100, 200, 300], dtype=np.timedelta64['m', 15])
 ```
 
-# Passing array data to C/C++
+## Passing array data to C/C++
 You can pass an `ndarray`'s underlying data pointer to a C/C++ function by using
 the `data` attribute of the array. For example:
 
@@ -489,16 +487,16 @@ struct ndarray_float32_3 {
 This can be used to pass an entire `ndarray` object to a C function without breaking
 it up into its constituent components.
 
-# Performance tips
+## Performance tips
 
-## Array layouts
+### Array layouts
 As with standard NumPy, Codon-NumPy performs best when array data is contiguous in
 memory, ideally in row-major order (also called "C order"). Most NumPy functions will
 return C-order arrays, but operations like slicing and transposing arrays can alter
 contiguity. You can use `numpy.ascontiguousarray()` to create a contiguous array from
 an arbitrary array.
 
-## Linux huge pages
+### Linux huge pages
 When working with large arrays on Linux, enabling
 [transparent hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html)
 can result in significant performance improvements.
@@ -515,7 +513,7 @@ and you can enable them via
 echo "always" | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
-## Disabling exceptions
+### Disabling exceptions
 By default, Codon performs various validation checks at runtime (e.g. bounds checks when
 indexing an array) just like standard NumPy, and raises an exception if they fail. If
 you know your program will not raise or catch any exceptions, you can disable these
@@ -524,13 +522,13 @@ checks through the `-disable-exceptions` compiler flag.
 Note that when using this flag, raising an exception will terminate the process with a
 `SIGTRAP`.
 
-## Fast-math
+### Fast-math
 You can enable "fast-math" optimizations via the `-fast-math` compiler flag. It is
 advisable to **use this flag with caution** as it changes floating point semantics and
 makes assumptions regarding `inf` and `nan` values. For more information, consult LLVM's
 documentation on [fast-math flags](https://llvm.org/docs/LangRef.html#fast-math-flags).
 
-# Not-yet-supported
+## Not-yet-supported
 The following features of NumPy are not yet supported, but are planned for the future:
 - String operations
 - Masked arrays

@@ -1,7 +1,4 @@
----
-tags:
-  - Advanced
----
+## Summary
 After type checking but before native code generation, the Codon compiler
 makes use of a new [intermediate representation](https://en.wikipedia.org/wiki/Intermediate_representation)
 called CIR, where a number of higher-level optimizations, transformations and analyses take place.
@@ -10,7 +7,7 @@ analyses without having to deal with cumbersome abstract syntax trees (ASTs).
 In this section we'll give an overview of CIR, discuss the types of things
 you might want to use it for, and give a few examples.
 
-# At a glance
+## At a glance
 
 Here is a small (simplified) example showcasing CIR in action. Consider the code:
 
@@ -56,7 +53,7 @@ A few interesting points to consider:
 - CIR has no concept of generic types. By the time CIR is generated, all types
   need to have been resolved.
 
-# Structure
+## Structure
 
 CIR is comprised of a set of *nodes*, each with a specific semantic meaning.
 There are nodes for representing constants (e.g. `42`), instructions (e.g. `call`)
@@ -77,7 +74,7 @@ and some examples:
 | `Instr`  | `Instruction`   | `CallInstr`, `TernaryInstr`, `ThrowInstr` |
 | `Flow`   | n/a             | `IfFlow`, `WhileFlow`, `ForFlow`          |
 
-# Uses
+## Uses
 
 CIR provides a framework for doing program optimizations, analyses and transformations.
 These operations are collectively known as IR *passes*.
@@ -96,7 +93,7 @@ used as building blocks to create new passes. Examples include:
 
 We're regularly adding new standard passes, so this list is always growing.
 
-## An example
+### An example
 
 Let's look at a real example. Imagine we want to write a pass that transforms expressions
 of the form `<int const> + <int const>` into a single `<int const>` denoting the result.
@@ -130,6 +127,7 @@ public:
 
 const std::string MyAddFolder::KEY = "my-add-folder";
 ```
+## How does this work?
 
 So how does this actually work, and what do the different components mean? Here
 are some notable points:
@@ -262,7 +260,7 @@ validate('a', c)
 Notice that we used `getOrRealizeFunc` to create three different instances of `validate`: one for `int`
 arguments, one for `float` arguments and finally one for `str` arguments.
 
-# Extending the IR
+## Extending the IR
 
 CIR is extensible, and it is possible to add new constants, instructions, flows and types. This can be
 done by subclassing the corresponding *custom* base class; to create a custom type, for example, you
@@ -310,14 +308,14 @@ control-flow graphs out of them.
 > [CRTP](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern) class, as in
 > `class MyNewInstr : public AcceptorExtend<MyNewInstr, dsl::CustomInstr>`.
 
-# Utilities
+## Utilities
 
 The `codon/cir/util/` directory has a number of utility and generally helpful functions, for things like
 cloning IR, inlining/outlining, matching and more. `codon/cir/util/irtools.h` in particular has many helpful
 functions for performing various common tasks. If you're working with CIR, be sure to take a look at these
 functions to make your life easier!
 
-# Standard pass pipeline
+## Standard pass pipeline
 
 These standard sets of passes are run in `release`-mode:
 

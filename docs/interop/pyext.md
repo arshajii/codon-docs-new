@@ -1,7 +1,4 @@
----
-tags:
-  - Interoperability
----
+## Summary
 Codon includes a build mode called `pyext` for generating
 [Python extensions](https://docs.python.org/3/extending/extending.html)
 (which are traditionally written in C, C++ or Cython):
@@ -19,7 +16,7 @@ codon build -pyext extension.codon  # add -release to enable optimizations
 > It is recommended to use the `pyext` build mode with Python versions 3.9
 > and up.
 
-# Functions
+## Functions
 
 Extension functions written in Codon should generally be fully typed:
 
@@ -50,7 +47,7 @@ This will result in a single Python function `bar()` that dispatches to the
 correct Codon `bar()` at runtime based on the argument's type (or raise a
 `TypeError` on an invalid input type).
 
-# Types
+## Types
 
 Codon class definitions can also be converted to Python extension types via
 the `@dataclass(python=True)` decorator:
@@ -85,7 +82,7 @@ b = a + Vec(1, 2)      # Vec(4.0, 6.0)
 c = b + 10.0           # Vec(14.0, 16.0)
 ```
 
-# Building with `setuptools`
+## Building with `setuptools`
 
 Codon's `pyext` build mode can be used with `setuptools`. Here is a minimal example:
 
