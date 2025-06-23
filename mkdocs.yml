@@ -12,12 +12,14 @@ theme:
      code: Source Code Mono
    palette:
     # Palette toggle for light mode
-    - scheme: default
+    - scheme: custom
+      primary: black
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
     # Palette toggle for dark mode
     - scheme: slate
+      primary: black
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -32,6 +34,8 @@ theme:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - stylesheets/exaloop.css
 markdown_extensions:
   - attr_list
   - md_in_html
