@@ -1,4 +1,3 @@
-## Summary
 Codon includes a Python package called `codon` that allows
 functions or methods within Python codebases to be compiled and
 executed by Codon's JIT. The `codon` library can be installed

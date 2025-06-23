@@ -1,5 +1,3 @@
-## Summary
-
 Here are some of the most frequently asked questions we get about Codon. We periodically update this
 baased on question themes we get on our Discord Server - be sure to sign up and join
 the community - [Join here!](https://discord.gg/HeWRhagCmP)

@@ -1,5 +1,3 @@
-## Summary
-
 Functions are defined as follows:
 
 ``` python

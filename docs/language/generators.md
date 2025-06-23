@@ -1,4 +1,3 @@
-## Summary
 Codon supports generators, and in fact they are heavily optimized in
 the compiler so as to typically eliminate any overhead:
 

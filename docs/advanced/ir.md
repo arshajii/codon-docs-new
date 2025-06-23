@@ -1,4 +1,3 @@
-## Summary
 After type checking but before native code generation, the Codon compiler
 makes use of a new [intermediate representation](https://en.wikipedia.org/wiki/Intermediate_representation)
 called CIR, where a number of higher-level optimizations, transformations and analyses take place.

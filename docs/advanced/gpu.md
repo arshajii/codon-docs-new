@@ -1,4 +1,3 @@
-## Summary
 Codon supports GPU programming through a native GPU backend.
 Currently, only Nvidia devices are supported.
 Here is a simple example:

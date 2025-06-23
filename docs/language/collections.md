@@ -1,5 +1,3 @@
-## Summary
-
 Collections are largely the same as in Python:
 
 ``` py

@@ -1,4 +1,3 @@
-## Summary
 Codon supports a number of additional types that are not present
 in plain Python.
 

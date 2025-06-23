@@ -1,5 +1,3 @@
-## Summary
-
 Codon supports classes just like Python. However, you must declare
 class members and their types in the preamble of each class (like
 you would do with Python's dataclasses):

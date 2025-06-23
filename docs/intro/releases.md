@@ -1,5 +1,3 @@
-## Summary
-
 Below you can find release notes for each major Codon release,
 listing improvements, updates, optimizations and more for each
 new version.

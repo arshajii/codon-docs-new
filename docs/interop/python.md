@@ -1,4 +1,3 @@
-## Summary
 Calling Python from Codon is possible in two ways:
 
 -   `from python import` allows importing and calling Python functions

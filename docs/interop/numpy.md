@@ -1,5 +1,3 @@
-## Summary
-
 Codon ships with a feature-complete, fully-compiled native NumPy implementation.
 It uses the same API as NumPy, but re-implements everything in Codon itself,
 allowing for a range of optimizations and performance improvements. Codon-NumPy

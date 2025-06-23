@@ -1,4 +1,3 @@
-## Summary
 If you know Python, you already know 99% of Codon. This section
 covers the Codon language as well as some of the key differences
 and additional features on top of Python.

@@ -1,4 +1,3 @@
-## Summary
 Unless you really need to build Codon for whatever reason, we strongly
 recommend using pre-built binaries if possible.
 

@@ -1,4 +1,3 @@
-## Summary
 Codon allows inline LLVM IR via the `@llvm` annotation:
 
 ``` python

@@ -1,4 +1,3 @@
-## Summary
 Codon includes a build mode called `pyext` for generating
 [Python extensions](https://docs.python.org/3/extending/extending.html)
 (which are traditionally written in C, C++ or Cython):
