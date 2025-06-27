@@ -1,29 +1,28 @@
-site_name: Codon
+site_name: ""
 repo_url: https://github.com/exaloop/codon
 repo_name: exaloop/codon
 theme:
-   name: material
-   logo: img/codon-white.png
-   custom_dir: exaloop_theme
-   icon:
-    repo: fontawesome/brands/git-alt
-   font:
-     text: Open Sans
-     code: Source Code Mono
-   palette:
+  name: material
+  custom_dir: overrides
+  logo: img/codon-white.svg
+  icon:
+    repo: fontawesome/brands/github
+  favicon: img/favicon.png
+  font:
+    text: Open Sans
+    code: Source Code Mono
+  palette:
     # Palette toggle for light mode
-    - scheme: custom
-      primary: black
+    - scheme: default
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
     # Palette toggle for dark mode
     - scheme: slate
-      primary: black
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-   features:
+  features:
     - content.code.copy
     - search.suggest
     - search.highlight
@@ -31,20 +30,43 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.tabs
+    - navigation.path
+    - navigation.top
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/exaloop
+
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/HeWRhagCmP
+
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/exaloop
+
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/exaloop
+
+  generator: false
+
+copyright: Copyright &copy; 2025 Exaloop, Inc.
+
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 extra_css:
-  - stylesheets/exaloop.css
+  - stylesheets/extra.css
+
 markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.highlight:
-      anchor_linenums: true
+      use_pygments: true
       line_spans: __span
-      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.details
   - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -56,40 +78,18 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - footnotes
+
 plugins:
   - tags
-  - typeset
-  - optimize
+  # - typeset
+  # - optimize
   - search
+
 nav:
-  - Home: index.md
-  - Introduction:
-    - Getting started: intro/intro.md
-    - Frequently asked questions: intro/faq.md
-    - Differences with Python: intro/differences.md
-    - Release notes: intro/releases.md
-    - Roadmap: intro/roadmap.md
-  - Language Features:
-    - Basics: language/basics.md
-    - Collections: language/collections.md
-    - Functions: language/functions.md
-    - Classes: language/classes.md
-    - Generators: language/generators.md
-    - Statics: language/statics.md
-    - Other types and features: language/extra.md
-    - Foreign function interface: language/ffi.md
-    - Inline LLVM IR: language/llvm.md
-  - Interoperability:
-    - NumPy support: interop/numpy.md
-    - Python integration: interop/python.md
-    - Python decorator: interop/decorator.md
-    - Python extensions: interop/pyext.md
-    - C/C++ integration: interop/cpp.md
-    - Jupyter integration: interop/jupyter.md
-  - Advanced:
-    - Parallelism and multithreading: advanced/parallel.md
-    - GPU programming: advanced/gpu.md
-    - Pipelines: advanced/pipelines.md
-    - Intermediate representation: advanced/ir.md
-    - Building from source: advanced/build.md
-  - Blog: https://www.exaloop.io/blog
+  - Get Started:
+    - Install: intro/install.md
+    - Usage: intro/usage.md
