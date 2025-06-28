@@ -158,6 +158,37 @@ codon build -pyext -o hello.o -release -module mymodule program.py
     When using `-pyext`, you will also often want to use the `--relocation-model=pic`
     flag to generate position-independent code.
 
+## `codon jit`
+
+Codon provides a debugging interface for its JIT compilation capabilities through the
+`codon jit` subcommand. This subcommand uses the same JIT engine internally as used by
+Codon's [Python JIT decorator](integrations/python/jit.md) and [Jupyter kernel](integrations/jupyter.md).
+However, it is intended to be used as a debugging utility rather than as a general usage mode.
+
+!!! warning
+
+    `codon jit` is intended to be used as a debugging utility for Codon's JIT compilation
+    capabilities. The interface may change between Codon versions.
+
+`codon jit` can be passed a file name to read from, or `-` to read from standard input.
+For example:
+
+```bash
+echo 'print("hello world")' | build/codon jit -
+# >>> Codon JIT v0.19.0 <<<
+# hello world
+# [done]
+```
+
+It can also be used as a REPL if no file is provided. JIT inputs can be separated with the string `#%%`.
+
+## Using Codon in an existing Python codebase
+
+Codon provides a Python package called `codon-jit` that can be installed with `pip`. This package
+supports JIT compilation on a per-function basis within an existing Python codebase.
+
+Learn more in the [Python JIT docs](integrations/python/jit.md).
+
 ## Additional options
 
 ### Disabling exceptions
@@ -237,7 +268,7 @@ to use a 16-bit integer as the type of variable `n`.
 ## Logging
 
 Codon can display logging information and also output intermediate compilation results via the
-`-log <streams>` command. The argument to `-log` can consist of the following characters:
+`-log <streams>` command. The argument to `-log` can contain any of the following characters:
 
 - `t` (time): Displays timings for various stages of the compilation process.
 - `T` (typecheck): Enables logging during type checking

@@ -93,3 +93,8 @@ nav:
   - Get Started:
     - Install: intro/install.md
     - Usage: intro/usage.md
+  - Language:
+    - Overview: lang/lang.md
+    - Classes: lang/classes.md
+    - Generics: lang/generics.md
+    - Metaprogramming: lang/meta.md
