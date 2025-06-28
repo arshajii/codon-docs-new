@@ -98,3 +98,19 @@ nav:
     - Classes: lang/classes.md
     - Generics: lang/generics.md
     - Metaprogramming: lang/meta.md
+    - Low-Level Programming: lang/lowlevel.md
+    - Inline LLVM IR: lang/llvm.md
+  - Integrations:
+    - Python:
+      - Call Python from Codon: integrations/python/python-from-codon.md
+      - Call Codon from Python: integrations/python/codon-from-python.md
+      - Create Python extensions: integrations/python/extensions.md
+    - C/C++:
+      - Call C/C++ from Codon: integrations/cpp/cpp-from-codon.md
+      - Call Codon from C/C++: integrations/cpp/codon-from-cpp.md
+
+
+
+
+
+

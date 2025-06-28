@@ -24,7 +24,7 @@ foo(100)                 # error: 'int' does not match expected type 'List[T]'
 
 !!! info
 
-    This syntax is supported by Python 3.12 and up. See [PEP 695](https://peps.python.org/pep-0695/)
+    This syntax is supported by Python 3.12 and up. See [PEP 695](https://peps.python.org/pep-0695/).
 
 In this code, `T` is a *generic type parameter* that gets realized
 based on the argument type:
