@@ -91,7 +91,7 @@ plugins:
 
 nav:
   - Get Started:
-    - Install: start/install.md
+    - Installation: start/install.md
     - Usage: start/usage.md
     - FAQ: start/faq.md
   - Language:
@@ -112,14 +112,15 @@ nav:
     - C/C++:
       - Call C/C++ from Codon: integrations/cpp/cpp-from-codon.md
       - Call Codon from C/C++: integrations/cpp/codon-from-cpp.md
+    - Jupyter: integrations/jupyter.md
   - Parallel Programming:
     - Multithreading: parallel/multithreading.md
     - GPU: parallel/gpu.md
   - Developers:
     - Compilation Flow: developers/compilation.md
     - Intermediate Representation: developers/ir.md
+    - Extend Codon: developers/extend.md
     - Build from Source: developers/build.md
+    - Roadmap: developers/roadmap.md
+  - Releases: releases.md
   - Blog: https://exaloop.io/blog
-
-
-
