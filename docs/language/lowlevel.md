@@ -220,4 +220,4 @@ def f():
 ```
 
 Arrays created with `__array__` have two fields: `ptr` (pointer to array data) and `len`
-(length of array). The argument of `__array__` must be a [literal](/lang/meta#literals) integer.
+(length of array). The argument of `__array__` must be a [literal](/language/meta#literals) integer.

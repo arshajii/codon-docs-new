@@ -21,7 +21,7 @@
     ```
 
     With this package installed, you can use the `@codon.jit` decorator.
-    [Learn more &#x2192;](integrations/python/jit.md)
+    [Learn more &#x2192;](/integrations/python/codon-from-python)
 
 ## Run your first program
 

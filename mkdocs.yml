@@ -91,26 +91,35 @@ plugins:
 
 nav:
   - Get Started:
-    - Install: intro/install.md
-    - Usage: intro/usage.md
+    - Install: start/install.md
+    - Usage: start/usage.md
+    - FAQ: start/faq.md
   - Language:
-    - Overview: lang/lang.md
-    - Classes: lang/classes.md
-    - Generics: lang/generics.md
-    - Metaprogramming: lang/meta.md
-    - Low-Level Programming: lang/lowlevel.md
-    - Inline LLVM IR: lang/llvm.md
+    - Overview: language/overview.md
+    - Classes: language/classes.md
+    - Generics: language/generics.md
+    - Metaprogramming: language/meta.md
+    - Low-Level Programming: language/lowlevel.md
+    - Inline LLVM IR: language/llvm.md
+  - Libraries:
+    - Standard Library: libraries/stdlib.md
+    - NumPy: libraries/numpy.md
   - Integrations:
     - Python:
       - Call Python from Codon: integrations/python/python-from-codon.md
       - Call Codon from Python: integrations/python/codon-from-python.md
-      - Create Python extensions: integrations/python/extensions.md
+      - Create Python Extensions: integrations/python/extensions.md
     - C/C++:
       - Call C/C++ from Codon: integrations/cpp/cpp-from-codon.md
       - Call Codon from C/C++: integrations/cpp/codon-from-cpp.md
-
-
-
+  - Parallel Programming:
+    - Multithreading: parallel/multithreading.md
+    - GPU: parallel/gpu.md
+  - Developers:
+    - Compilation Flow: developers/compilation.md
+    - Intermediate Representation: developers/ir.md
+    - Build from Source: developers/build.md
+  - Blog: https://exaloop.io/blog
 
 
 

@@ -113,7 +113,8 @@ codon build -o hello.so -release program.py
     If you intend to call a Codon-generated shared library from C or C++,
     be sure to mark relevant functions with `@export` to ensure they are
     made visible by the linker. Exported functions can be called as regular
-    C functions (i.e. they follow the C ABI). [Learn more &#x2192;](integrations/c/export.md)
+    C functions (i.e. they follow the C ABI).
+    [Learn more &#x2192;](/integrations/cpp/codon-from-cpp)
 
 ### Compile to LLVM IR
 
@@ -162,7 +163,7 @@ codon build -pyext -o hello.o -release -module mymodule program.py
 
 Codon provides a debugging interface for its JIT compilation capabilities through the
 `codon jit` subcommand. This subcommand uses the same JIT engine internally as used by
-Codon's [Python JIT decorator](integrations/python/jit.md) and [Jupyter kernel](integrations/jupyter.md).
+Codon's [Python JIT decorator](/integrations/python/codon-from-python) and [Jupyter kernel](/integrations/jupyter).
 However, it is intended to be used as a debugging utility rather than as a general usage mode.
 
 !!! warning
@@ -187,7 +188,7 @@ It can also be used as a REPL if no file is provided. JIT inputs can be separate
 Codon provides a Python package called `codon-jit` that can be installed with `pip`. This package
 supports JIT compilation on a per-function basis within an existing Python codebase.
 
-Learn more in the [Python JIT docs](integrations/python/jit.md).
+Learn more in the [Python JIT docs](/integrations/python/codon-from-python).
 
 ## Additional options
 
@@ -248,7 +249,7 @@ build/codon run -release -disable-opt core-numpy-fusion program.py
 ## Compile-time definitions
 
 Literal variables can be passed on the command-line via the `-D` flag. These variables are
-treated as compile-time constants and can be used for [compile-time metaprogramming](lang/meta.md).
+treated as compile-time constants and can be used for [compile-time metaprogramming](/language/meta).
 
 For example, the following code:
 

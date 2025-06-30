@@ -102,10 +102,10 @@ d: Literal[bool] = (s[2:4] == 'll')  # True
 ## Static loops
 
 It is also possible to express loops where the loop index is a literal
-integer, via the `internal.static` module:
+integer, via the `codon.static` module:
 
 ``` python
-import internal.static
+import codon.static
 
 for i in static.range(10):
     m: Literal[int] = 3*i + 1
@@ -119,7 +119,7 @@ Static loops can also be used to create tuples, the lengths of which
 must be compile-time constants in Codon:
 
 ``` python
-import internal.static
+import codon.static
 t = tuple(i*i for i in static.range(5))
 print(t)  # (0, 1, 4, 9, 16)
 ```
@@ -128,7 +128,7 @@ You can loop over another tuple by obtaining its length as an integer
 literal via `static.len()`:
 
 ``` python
-import internal.static
+import codon.static
 
 t = tuple(i*i for i in static.range(5))
 u = tuple(t[i] + 1 for i in static.range(static.len(t)))

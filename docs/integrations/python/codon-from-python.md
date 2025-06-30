@@ -63,17 +63,14 @@ outputs:
 
 !!! warning
 
-    Changes made to objects in a JIT'd function will not be reflected
-    in the host Python application, since objects passed to Codon are
-    *converted* to Codon-native types. If objects need to be modified,
+    In general, changes made to objects in a JIT'd function will not be
+    reflected in the host Python application, since objects passed to Codon
+    are *converted* to Codon-native types. If objects need to be modified,
     consider returning any necessary values and performing modifications
-    in Python.
-
-
-!!! warning
-
-    Polymorphism and inheritance are not supported in JIT mode.
-
+    in Python. The one notable exception to this rule is NumPy arrays, which
+    are not copied but instead have their data pointer passed directly to
+    Codon, meaning array modifications *are* visible in the host Python
+    application.
 
 ## Type conversions
 

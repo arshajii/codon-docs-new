@@ -33,10 +33,10 @@ You can use Codon to:
 
 - :x: *Drop-in replacement for CPython:* Codon is not a drop-in replacement for CPython. There are some
   aspects of Python that are not suitable for static compilation — we don't support these in Codon.
-  There are ways to use Codon in larger Python codebases via its [JIT decorator](interop/decorator.md)
-  or [Python extension backend](interop/pyext.md). Codon also supports
-  calling any Python module via its [Python interoperability](interop/python.md).
-  See also [*"Differences with Python"*](intro/differences.md) in the docs.
+  There are ways to use Codon in larger Python codebases via its [JIT decorator](/integrations/python/codon-from-python)
+  or [Python extension backend](/integrations/python/extensions). Codon also supports
+  calling any Python module via its [Python interoperability](/integrations/python/python-from/codon).
+  See also [*"Differences with Python"*](/start/differences) in the docs.
 
 - :x: *New syntax and language constructs:* We try to avoid adding new syntax, keywords or other language
   features as much as possible. While Codon does add some new syntax in a couple places (e.g. to express
