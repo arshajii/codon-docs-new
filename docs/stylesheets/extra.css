@@ -11,33 +11,6 @@
   background-color: #151720;
 }
 
-[data-md-color-scheme="default"] {
-  /* base bg + fg */
-  --md-code-bg-color:             #011627;
-  --md-code-fg-color:             #d6deeb;
-
-  /* Night Owl token colours */
-  --md-code-hl-comment-color:     #637777;               /* comments */
-  --md-code-hl-keyword-color:     #c792ea;               /* import, def, for, in */
-  --md-code-hl-function-color:    #82aaff;               /* definition names */
-  --md-code-hl-call-color:        #d6deeb;               /* built-in calls like range() */
-  --md-code-hl-variable-color:    #d6deeb;               /* locals / params (i, j, k) */
-  --md-code-hl-constant-color:    #9ba3b2;               /* e.g. constants / enums */
-  --md-code-hl-number-color:      #f78c6c;               /* numeric literals */
-  --md-code-hl-string-color:      #ecc48d;               /* string literals */
-  --md-code-hl-name-color:        #82aaff;               /* class names, tags */
-  --md-code-hl-operator-color:    #c792ea;               /* +, =, etc. */
-  --md-code-hl-punctuation-color: #9ba3b2;               /* commas, colons, brackets */
-  --md-code-hl-generic-color:     #d6deeb;               /* fallback */
-
-  /* line-highlight (selection) */
-  --md-code-hl-color:             rgba(29, 59, 83, 0.99);
-
-  /* inline code */
-  --md-code-inline-color:         #0e0e0e;
-  --md-code-inline-bg-color:      #0e0e0e;
-}
-
 /* Dark mode */
 [data-md-color-scheme="slate"] {
   --md-primary-bg-color: #F8FAF9;
