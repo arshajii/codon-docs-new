@@ -56,6 +56,14 @@
   background-color: #151720;
 }
 
+[data-md-color-scheme="slate"] .md-nav__title {
+  background-color: #0E0E0E !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__source {
+  background-color: #151720;
+}
+
 [data-md-color-scheme="slate"] {
   /* base bg + fg */
   --md-code-bg-color:             #011627;

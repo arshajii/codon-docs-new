@@ -52,7 +52,7 @@ extra:
 copyright: Copyright &copy; 2025 Exaloop, Inc.
 
 extra_javascript:
-  - javascripts/mathjax.js
+  - javascript/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
