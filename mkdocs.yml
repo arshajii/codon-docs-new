@@ -80,6 +80,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - admonition
   - footnotes
 
@@ -115,12 +117,13 @@ nav:
     - Jupyter: integrations/jupyter.md
   - Parallel Programming:
     - Multithreading: parallel/multithreading.md
-    - GPU: parallel/gpu.md
+    - GPU Programming: parallel/gpu.md
   - Developers:
     - Compilation Flow: developers/compilation.md
     - Intermediate Representation: developers/ir.md
     - Extend Codon: developers/extend.md
     - Build from Source: developers/build.md
+    - Contribute: developers/contribute.md
     - Roadmap: developers/roadmap.md
   - Releases: releases.md
   - Blog: https://exaloop.io/blog

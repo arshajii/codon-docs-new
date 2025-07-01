@@ -13,12 +13,12 @@ higher still.
 
 You can use Codon to:
 
-- Accelerate Python code without having to rewrite it in another language
-- Write multithreaded or GPU code in Python
-- Compile Python code to run on various kinds of hardware, such as edge devices or embedded systems
-- Generate Python extensions
-- JIT-compile performance-sensitive functions in an existing Python codebase
-- Accelerate NumPy code
+- [x] Accelerate Python code without having to rewrite it in another language
+- [x] Write multithreaded or GPU code in Python
+- [x] Compile Python code to run on various kinds of hardware, such as edge devices or embedded systems
+- [x] JIT-compile performance-sensitive functions in an existing Python codebase
+- [x] Accelerate and parallelize NumPy code
+- [x] Create Python extensions without using C or Cython
 
 ## Goals
 

@@ -18,6 +18,19 @@ from C import puts(cobj) -> None as print_line
 print_line("hello".c_str())  # prints "hello"; c_str() converts Codon str to C string
 ```
 
+You can also add [annotations](/language/llvm#annotations) such as
+`@pure` to C-imported functions by instead declaring them with the `@C`
+attribute:
+
+``` python
+@C
+@pure
+def sqrt(x: float) -> float:
+    pass
+
+print(sqrt(2.0))  # 1.41421
+```
+
 !!! warning
 
     If you're using C++, remember to declare any functions you want to call from
