@@ -77,13 +77,14 @@ def parse_docstr(s, level=0):
 def parse_type(a):
     """Parse type signature"""
     if not a:
+        print('??', a)
         return ""
     s = ""
     if isinstance(a, list):
         head, tail = a[0], a[1:]
     else:
-        head, tail = a, []
-    if head not in j:
+        head, tail = a, None
+    if head[0].isdigit() and head not in j:
         return "?"
     s += j[head]["name"] if head[0].isdigit() else head
     if tail:
