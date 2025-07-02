@@ -19,6 +19,28 @@ For example, with a Homebrew-installed Python 3.9 on macOS, this might be
 
 Note that only Python versions 3.6 and later are supported.
 
+!!! tip
+
+    You can use
+    [this](https://raw.githubusercontent.com/exaloop/codon/refs/heads/develop/test/python/find-python-library.py)
+    script to locate the Python shared library for the `CODON_PYTHON` environment variable. Simply run it as
+    `python3 find-python-library.py` and it will print the library path.
+
+!!! info
+
+    If you are using a virtual environment created with `venv`, set `PYTHON_PATH` to the `site-packages`
+    directory inside your virtual environment (e.g. `.venv/lib/python3.11/site-packages`).
+
+!!! info
+
+    If you using a virtual environment created with `uv`, you can use the following steps to set up the necessary
+    environment variables. From the parent directory of your python project (where `pyproject.toml` is):
+
+    1. Run `uv python find --system` and set `PYTHON_HOME` to the result.
+    2. Set `CODON_PYTHON` to the `libpython.dylib` (or `.so`) file found in the folder from the previous
+      step (e.g. `lib/python3.11.dylib`) as an absolute path.
+    3. Set `PYTHON_PATH` to the `site-packages` folder inside your virtual environment (e.g `.venv/lib/python3.11/site-packages`).
+
 ## Import Python modules in Codon
 
 Python modules can be imported and used in Codon-compiled programs through

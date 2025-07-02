@@ -39,7 +39,6 @@ supported = ">=0.18.0"
 cpp = "build/libmyvalidate"
 ```
 
-
 ## Implementation
 
 Plugins must extend the `codon::DSL` class to implement their functionality, and provide
