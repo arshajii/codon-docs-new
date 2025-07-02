@@ -363,10 +363,10 @@ stateDiagram-v2
 
     NORMAL --> RETURN: i = 3
     NORMAL --> BREAK: i > 3
-    NORMAL --> CONTINUE: i &le; 2
+    NORMAL --> CONTINUE: i ≤ 2
 
     RETURN --> BREAK: i > 2
-    RETURN --> CONTINUE: i &le; 2
+    RETURN --> CONTINUE: i ≤ 2
     RETURN --> [*]: otherwise
 
     BREAK --> CONTINUE: i < 4
