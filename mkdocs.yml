@@ -106,6 +106,7 @@ nav:
   - Libraries:
     - Standard Library: libraries/stdlib.md
     - NumPy: libraries/numpy.md
+    - API Reference: libraries/api/index.md
   - Integrations:
     - Python:
       - Call Python from Codon: integrations/python/python-from-codon.md
