@@ -1,4 +1,4 @@
-The `codon` command includes several sub-commands for compiling
+The `codon` command includes several subcommands for compiling
 and executing code.
 
 ## `codon run`

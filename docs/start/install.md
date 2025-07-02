@@ -32,7 +32,7 @@ print('Hello, World!')
 ```
 
 If we save this simple program to a file called `hello.py`, we can compile and run with
-the `codon run` sub-command:
+the `codon run` subcommand:
 
 ``` bash
 codon run hello.py
