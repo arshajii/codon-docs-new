@@ -82,6 +82,8 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - toc:
+      permalink: true
   - admonition
   - footnotes
 

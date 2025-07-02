@@ -33,8 +33,7 @@ for mid, module in modules.items():
         os.makedirs(os.path.join(out_path, directory), exist_ok=True)
         if name.endswith(".codon"):
             name = name[:-6]  # drop suffix
-        if name != "__init__":
-            parsed_modules[directory].add((name, mid))
+        parsed_modules[directory].add((name, mid))
         module = os.path.split(module)[0]
 
 print(f"Module read done!")
@@ -43,11 +42,13 @@ for directory, modules in parsed_modules.items():
     module = directory.replace("/", ".")
     with open(f"{out_path}/{directory}/index.md", "w") as f:
         if module:
-            print(f"# {module} {{#codon-module-{module}}}\n", file=f)
+            print(f"# `{module}`\n", file=f)
         else:
             print("# Standard Library Reference\n", file=f)
 
         for m in sorted(set(m for m, _ in modules)):
+            if m == "__init__":
+                continue
             base = os.path.join('libraries', 'api', directory, m)
             is_dir = os.path.isdir(os.path.join(out_path, directory, m))
             print(f"- [`{m}`](/{base}{'/' if is_dir else ''})", file=f)
@@ -93,26 +94,22 @@ def parse_type(a):
     return s
 
 
-def parse_fn(v, skip_self=False, skip_braces=False):
+def parse_fn(v):
     """Parse function signature after the name"""
     s = ""
     if "generics" in v and v["generics"]:
         s += f'[{", ".join(v["generics"])}]'
-    if not skip_braces:
-        s += "("
+    s += "("
     cnt = 0
     for ai, a in enumerate(v["args"]):
-        if ai == 0 and a["name"] == "self" and skip_self:
-            continue
         s += "" if not cnt else ", "
         cnt += 1
         s += f'{a["name"]}'
         if "type" in a:
-            s += " : " + parse_type(a["type"])
+            s += ": " + parse_type(a["type"])
         if "default" in a:
             s += " = " + a["default"] + ""
-    if not skip_braces:
-        s += ")"
+    s += ")"
     if "ret" in v:
         s += " -> " + parse_type(v["ret"])
     # if "extern" in v:
@@ -122,6 +119,7 @@ def parse_fn(v, skip_self=False, skip_braces=False):
 
 
 # 3. Create documentation for each module
+visited = set()
 for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m in mm}:
     if directory:
         module = f"{directory.replace('/', '.')}.{name}"
@@ -129,18 +127,32 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
         module = name
 
     file, mode = f"{out_path}/{directory}/{name}.md", "w"
+
     if os.path.isdir(f"{out_path}/{directory}/{name}"):
         continue
-    if name == "__init__":
+
+    init = (name == "__init__")
+
+    if init:
         file, mode = f"{out_path}/{directory}/index.md", "a"
+
+    if file in visited:
+        continue
+    else:
+        visited.add(file)
+
     with open(file, mode) as f:
-        print(f"# `{module}`", file=f)
+        if not init:
+            print(f"# module `{module}`", file=f)
+
         directory_prefix = directory + "/" if directory != "." else ""
         directory = directory.strip("/")
+        dir_part = (directory + "/") if directory else ""
         print(
-            f"Source code: [`stdlib/{directory}/{name}.codon`](https://github.com/exaloop/codon/blob/master/stdlib/{directory}/{name}.codon)\n",
+            f"\nSource: [`stdlib/{dir_part}{name}.codon`](https://github.com/exaloop/codon/blob/master/stdlib/{dir_part}{name}.codon)\n",
             file=f,
         )
+
         if "doc" in j[mid]:
             print(parse_docstr(j[mid]["doc"]), file=f)
 
@@ -152,18 +164,19 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
             if v["name"].startswith("_"):
                 continue
 
-            f.write("##")
+            icon = lambda name: f'<span style="color:#899499">:material-{name}:</span>'
+
+            f.write("---\n")
+            f.write("## ")
             if v["kind"] == "class":
-                if v["name"].endswith("Error"):
-                    v["type"] = "exception"
-                f.write(f'`{v["name"]}')
+                f.write(f'{icon("cube-outline")} **`{v["name"]}')
                 if "generics" in v and v["generics"]:
                     f.write(f'[{",".join(v["generics"])}]')
-                f.write("`")
+                f.write("`**")
             elif v["kind"] == "function":
-                f.write(f'`{v["name"]}{parse_fn(v)}`')
+                f.write(f'{icon("function")} **`{v["name"]}{parse_fn(v)}`**')
             elif v["kind"] == "variable":
-                f.write(f'`{v["name"]}`')
+                f.write(f'{icon("variable")} **`{v["name"]}`**')
             # if v['kind'] == 'class' and v['type'] == 'extension':
             #     f.write(f'**{getLink(v["parent"])}**')
             # else:
@@ -194,10 +207,10 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
 
                 props = [c for c in mt if "property" in j[c].get("attrs", [])]
                 if props:
-                    print("### Properties\n", file=f)
+                    print("## Properties\n", file=f)
                     for c in props:
                         v = j[c]
-                        f.write(f'#### `{v["name"]}`\n')
+                        f.write(f'### `{v["name"]}`\n')
                         if "doc" in v:
                             f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
                         f.write("\n")
@@ -210,27 +223,27 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
                     and j[c]["name"].endswith("__")
                 ]
                 if magics:
-                    print("### Magic methods\n", file=f)
+                    print("## Magic methods\n", file=f)
                     for c in magics:
                         v = j[c]
                         f.write(
-                            f'#### `{v["name"]}{parse_fn(v,True)}`\n'
+                            f'### `{v["name"]}{parse_fn(v)}`\n'
                         )
                         if "doc" in v:
                             f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
                         f.write("\n")
                 methods = [c for c in mt if j[c]["name"][0] != "_" and c not in props]
                 if methods:
-                    print("### Methods\n", file=f)
+                    print("## Methods\n", file=f)
                     for c in methods:
                         v = j[c]
                         f.write(
-                            f'#### `{v["name"]}{parse_fn(v,True)}`\n'
+                            f'### `{v["name"]}{parse_fn(v)}`\n'
                         )
                         if "doc" in v:
                             f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
                         f.write("\n")
-            f.write("---\n\n")
+            f.write("\n\n")
 
         f.write("\n\n")
 
