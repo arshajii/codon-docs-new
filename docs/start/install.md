@@ -1,6 +1,6 @@
 ## Install Codon
 
-=== "Command-line tool"
+=== ":simple-gnometerminal: &nbsp; Command-line tool"
 
     Use this command to install the Codon CLI that can be used to compile and
     run programs from the command line:
@@ -11,7 +11,7 @@
 
     Follow the prompts to add the `codon` command to your path.
 
-=== "Python package"
+=== ":simple-python: &nbsp; Python package"
 
     Use this command to install the `codon` Python package, which can be used to
     compile functions in an existing Python codebase:

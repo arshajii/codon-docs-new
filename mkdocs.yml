@@ -99,6 +99,7 @@ nav:
     - Installation: start/install.md
     - Usage: start/usage.md
     - FAQ: start/faq.md
+    - Changelog: start/changelog.md
   - Language:
     - Overview: language/overview.md
     - Classes: language/classes.md
@@ -129,5 +130,4 @@ nav:
     - Build from Source: developers/build.md
     - Contribute: developers/contribute.md
     - Roadmap: developers/roadmap.md
-  - Releases: releases.md
   - Blog: https://exaloop.io/blog
