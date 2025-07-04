@@ -32,6 +32,7 @@ theme:
     - navigation.tabs
     - navigation.path
     - navigation.top
+    - announce.dismiss
 
 extra:
   social:
@@ -89,8 +90,8 @@ markdown_extensions:
 
 plugins:
   - tags
-  # - typeset
-  # - optimize
+  - typeset
+  - optimize
   - search
 
 nav:
