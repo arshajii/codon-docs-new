@@ -2,6 +2,10 @@
 # Generic .gitignore #
 ######################
 
+# Caches #
+##########
+.cache
+
 # Compiled source #
 ###################
 *.com
