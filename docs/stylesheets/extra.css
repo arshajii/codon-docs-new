@@ -1,6 +1,8 @@
 /* Announcement bar */
 .md-banner {
   background-color: #5865F2;
+  background-image: radial-gradient(#777D92 1px, transparent 0);
+  background-size: 10px 10px;
 }
 
 .md-banner__inner {
@@ -44,6 +46,83 @@
   vertical-align: middle;
   display: inline;
   fill: currentColor;
+}
+
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  display: block;
+  height: 100%;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--md-default-bg-color);
+}
+
+.card-img {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  z-index: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.card-img img {
+  max-width: 100px;
+  height: auto;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--md-typeset-color);
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--md-typeset-color);
+}
+
+[data-md-color-scheme="default"] .card-wrap {
+  display: block;
+  position: relative;
+  background-color: #DBDBDB;
+  padding: 0.075rem;
+  border-radius: 0.25rem;
+}
+
+[data-md-color-scheme="default"] .card-wrap:hover {
+  background-color: var(--md-accent-fg-color);
+}
+
+[data-md-color-scheme="default"] .card-icon-dark {
+  display: none;
+}
+
+[data-md-color-scheme="slate"] .card-wrap {
+  display: block;
+  position: relative;
+  background-color: #DBDBDB;
+  padding: 0.075rem;
+  border-radius: 0.25rem;
+}
+
+[data-md-color-scheme="slate"] .card-wrap:hover {
+  background-color: var(--md-accent-fg-color);
+}
+
+[data-md-color-scheme="slate"] .card-icon-light {
+  display: none;
 }
 
 
