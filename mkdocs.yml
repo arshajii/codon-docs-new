@@ -94,6 +94,7 @@ plugins:
   - typeset
   - optimize
   - search
+  - macros
 
 nav:
   - Get Started:
@@ -124,6 +125,7 @@ nav:
   - Parallel Programming:
     - Multithreading: parallel/multithreading.md
     - GPU Programming: parallel/gpu.md
+  - Labs: labs/index.md
   - Developers:
     - Compilation Flow: developers/compilation.md
     - Intermediate Representation: developers/ir.md
