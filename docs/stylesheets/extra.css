@@ -149,13 +149,36 @@
   padding: 1rem;
   text-decoration: none;
   color: inherit;
-  background-color: #226BF9;
+  background-image: linear-gradient(to bottom right, #226BF9, #512888);
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 9px 4px rgba(0,0,0,0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 9px 4px rgba(0,0,0,0);
+}
+
+.lab:hover {
+  background-image: linear-gradient(to bottom right, #226BF9D0, #512888D0);
 }
 
 .lab hr {
-  border-top: 0.8px solid #F8FAF9;
+  border: 0;
+  background-image: linear-gradient(to right, #00000000, #F8FAF9, #00000000);
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.lab h3 {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #F8FAF9;
+}
+
+.lab p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.75rem;
+  color: #F8FAF9;
 }
 
 .lab-tag-new {
@@ -201,30 +224,12 @@
   height: auto;
 }
 
-.lab h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #F8FAF9;
-}
-
-.lab p {
-  margin: 0;
-  font-size: 0.75rem;
-  color: #F8FAF9;
-}
-
 .lab-wrap {
   display: block;
   position: relative;
   background-color: none;
-  padding: 0.1rem;
+  padding: 0;
   border-radius: 0.5rem;
-}
-
-.lab-wrap:hover {
-  -webkit-box-shadow:0px 0px 10px 4px #226BF9;
-  -moz-box-shadow: 0px 0px 10px 4px #226BF9;
-  box-shadow: 0px 0px 10px 4px #226BF9;
 }
 
 
