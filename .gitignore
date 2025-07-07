@@ -18,6 +18,7 @@
 *.so
 *.dylib
 *.pyc
+site
 
 # Packages #
 ############
