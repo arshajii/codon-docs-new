@@ -1,0 +1,6 @@
+# git+https://${GITHUB_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+mkdocs
+mkdocs-autorefs
+mkdocs-macros-plugin
+mkdocs-material
+mkdocs-typeset
