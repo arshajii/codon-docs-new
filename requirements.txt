@@ -3,4 +3,4 @@ mkdocs
 mkdocs-autorefs
 mkdocs-macros-plugin
 mkdocs-material
-mkdocs-typeset
+mkdocs-material-extensions
