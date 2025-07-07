@@ -1,10 +1,14 @@
+# Generates API reference for Codon standard library
+# See CI workflow for usage
+
 import itertools
 import os
 import os.path
 import sys
-import subprocess as sp
 import collections
 import json
+
+from pathlib import Path
 
 json_path = os.path.abspath(sys.argv[1])
 out_path = os.path.abspath(sys.argv[2])
@@ -18,12 +22,19 @@ print("Load done!")
 modules = {k: v["path"] for k, v in j.items() if v["kind"] == "module"}
 parsed_modules = collections.defaultdict(set)
 
+def remove_root(path, roots):
+    for root in roots:
+        try:
+            rel = str(Path(path).relative_to(root))
+        except ValueError:
+            continue
+        return rel if rel != '.' else ''
+    return path
+
 for mid, module in modules.items():
     while module not in roots:
         directory, name = os.path.split(module)
-        directory = os.path.relpath(directory, "")  # remove the prefix
-        directory = directory.partition("/")
-        directory = directory[2] if directory[1] else ""
+        directory = remove_root(directory, roots)
         os.makedirs(os.path.join(out_path, directory), exist_ok=True)
         if name.endswith(".codon"):
             name = name[:-6]  # drop suffix
