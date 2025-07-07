@@ -25,6 +25,18 @@ jobs:
           python -m pip install git+https://${{ secrets.GH_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
           python -m pip install -r requirements.txt
 
+      - name: Build API reference
+        run: |
+          curl -L \
+            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/exaloop/codon/actions/artifacts/3424140166/zip \
+            -o artifact.zip
+          unzip artifact.zip && rm artifact.zip
+          tar -xvzf codon-linux-x86_64.tar.gz && rm codon-linux-x86_64.tar.gz
+          codon-deploy/bin/codon doc codon-deploy/lib/codon/stdlib > docs.json
+          python docs/docgen.py docs.json docs/libraries/api $(pwd)/codon-deploy/lib/codon/stdlib
+
       - name: Build MkDocs site
         run: mkdocs build
 
