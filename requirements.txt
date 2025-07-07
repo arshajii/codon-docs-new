@@ -2,4 +2,3 @@ mkdocs
 mkdocs-autorefs
 mkdocs-macros-plugin
 mkdocs-material-extensions
-pngquant
