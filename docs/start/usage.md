@@ -63,24 +63,16 @@ codon build -exe -o hello -release program.py
 codon build -o hello -release program.py
 ```
 
-### Compile to object file
-
-The `-obj` flag can be used to generate an object file:
+Codon uses a C++ compiler to link the actual executable after compilation.
+Extra linker flags can be passed with the `-linker-flags` argument. For example:
 
 ``` bash
-# compile 'program.py' to object file 'program.o'
-codon build -obj program.py
-
-# compile 'program.py' to object file 'hello.o'
-codon build -obj -o hello.o program.py
-
-# compile 'program.py' to object file 'hello.o' with optimizations
-codon build -obj -o hello.o -release program.py
-
-# compile 'program.py' to object file 'hello.o' with optimizations
-# '-obj' is inferred from `-o` argument
-codon build -o hello.o -release program.py
+# includes /foo/bar in the executable's rpath
+codon build -release -linker-flags '-Wl,-rpath,/foo/bar' program.py
 ```
+
+Multiple linker flags can be passed by separating them with a space in the argument
+to `-linker-flags`.
 
 ### Compile to shared library
 
@@ -101,6 +93,9 @@ codon build -lib -o hello.so -release program.py
 codon build -o hello.so -release program.py
 ```
 
+The `-linker-flags` flag described above also applies when compiling to
+a shared library.
+
 !!! info
 
     When compiling to a shared library, the program's main code will be
@@ -115,6 +110,25 @@ codon build -o hello.so -release program.py
     made visible by the linker. Exported functions can be called as regular
     C functions (i.e. they follow the C ABI).
     [Learn more &#x2192;](/integrations/cpp/codon-from-cpp)
+
+### Compile to object file
+
+The `-obj` flag can be used to generate an object file:
+
+``` bash
+# compile 'program.py' to object file 'program.o'
+codon build -obj program.py
+
+# compile 'program.py' to object file 'hello.o'
+codon build -obj -o hello.o program.py
+
+# compile 'program.py' to object file 'hello.o' with optimizations
+codon build -obj -o hello.o -release program.py
+
+# compile 'program.py' to object file 'hello.o' with optimizations
+# '-obj' is inferred from `-o` argument
+codon build -o hello.o -release program.py
+```
 
 ### Compile to LLVM IR
 
