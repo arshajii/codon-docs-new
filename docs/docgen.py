@@ -5,12 +5,6 @@ import sys
 import subprocess as sp
 import collections
 import json
-from pprint import pprint
-
-from sphinx.ext.napoleon.docstring import GoogleDocstring
-from sphinx.ext.napoleon import Config
-
-napoleon_config = Config(napoleon_use_param=True, napoleon_use_rtype=True)
 
 json_path = os.path.abspath(sys.argv[1])
 out_path = os.path.abspath(sys.argv[2])
@@ -58,9 +52,6 @@ print(f" - Done with directory tree")
 
 def parse_docstr(s, level=0):
     """Parse docstr s and indent it with level spaces"""
-    #lines = GoogleDocstring(s, napoleon_config).lines()
-    #print(lines)
-    #if isinstance(lines, str):  # Napoleon failed
     s = s.split("\n")
     while s and s[0] == "":
         s = s[1:]
