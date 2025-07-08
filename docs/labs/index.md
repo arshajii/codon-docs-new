@@ -37,3 +37,11 @@ cases and domain-specific applications. Check out the catalog of labs below!
   </div>
 
 </div>
+
+## Contribute a lab
+
+Do you have an interesting use case or application of Codon that others would
+find helpful to learn about? If so, consider creating a lab that we can include
+here! Please reach out to us [on Discord](https://discord.gg/HeWRhagCmP) or
+[on email](mailto:info@exaloop.io) if you are considering
+creating a lab so we can work together on the content and format!

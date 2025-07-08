@@ -1,1 +1,1 @@
-# 🧪 **Lab:** Get started with Codon
+# 🧪 Get started with Codon
