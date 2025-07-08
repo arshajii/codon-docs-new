@@ -463,7 +463,7 @@ foo(arr.data, arr.size)
 
 Of course, it's the caller's responsibility to make sure the array is contiguous
 as needed and/or pass additional shape or stride information. See the
-[C interoperability](../integrations/cpp/cpp-from-codon) docs for more information.
+[C interoperability](/integrations/cpp/cpp-from-codon) docs for more information.
 
 ### Array ABI
 
