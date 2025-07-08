@@ -30,7 +30,6 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.tabs
-    - navigation.path
     - navigation.top
     - announce.dismiss
 
@@ -121,6 +120,7 @@ nav:
     - C/C++:
       - Call C/C++ from Codon: integrations/cpp/cpp-from-codon.md
       - Call Codon from C/C++: integrations/cpp/codon-from-cpp.md
+      - Embed Codon JIT: integrations/cpp/jit.md
     - Jupyter: integrations/jupyter.md
   - Parallel Programming:
     - Multithreading: parallel/multithreading.md
