@@ -252,7 +252,7 @@
 
 /* API reference tags */
 .api-tag {
-  background-color: #226BF9A0;
+  background-color: #226BF9C0;
   border: 1px solid #226BF9;
   font-family: var(--md-code-font-family, monospace);
   color: white;
@@ -280,7 +280,7 @@
   pointer-events: none;
   width: max-content;
   max-width: 200px;
-  background-color: #226BF9A0;
+  background-color: #226BF9C0;
   border: 1px solid #226BF9;
   color: white;
   text-align: center;
@@ -293,7 +293,7 @@
   transform: translateX(-50%) scale(0.95);
   transition: opacity 0.2s ease, transform 0.2s ease;
   font-size: 0.7rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .api-tag-tooltiptext::after {
