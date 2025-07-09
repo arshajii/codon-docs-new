@@ -12,8 +12,8 @@ from pathlib import Path
 
 json_path = os.path.abspath(sys.argv[1])
 out_path = os.path.abspath(sys.argv[2])
-roots = sys.argv[3:]
-print(f"Generating documentation for {json_path}...")
+roots = [os.path.abspath(root) for root in sys.argv[3:]]
+print(f"Generating documentation for {json_path} ...")
 with open(json_path) as f:
     j = json.load(f)
 print("Load done!")
@@ -41,7 +41,7 @@ for mid, module in modules.items():
         parsed_modules[directory].add((name, mid))
         module = os.path.split(module)[0]
 
-print(f"Module read done!")
+print("Module read done!")
 
 for directory, modules in parsed_modules.items():
     module = directory.replace("/", ".")
@@ -60,7 +60,6 @@ for directory, modules in parsed_modules.items():
 
 print(f" - Done with directory tree")
 
-
 def parse_docstr(s, level=0):
     """Parse docstr s and indent it with level spaces"""
     s = s.split("\n")
@@ -75,12 +74,11 @@ def parse_docstr(s, level=0):
     lines = [l[indent:] for l in s]
     return "\n".join(("   " * level) + l for l in lines)
 
-
 def parse_type(a):
     """Parse type signature"""
     if not a:
         print('??', a)
-        return ""
+        return "?"
     s = ""
     if isinstance(a, list):
         head, tail = a[0], a[1:]
@@ -96,22 +94,27 @@ def parse_type(a):
         s += "]"
     return s
 
-
 def parse_fn(v):
     """Parse function signature after the name"""
     s = ""
     if "generics" in v and v["generics"]:
-        s += f'[{", ".join(v["generics"])}]'
+        # don't include argument-generics
+        generics_no_args = [
+            g for g in v["generics"]
+            if not any(a["name"] == g for a in v["args"])
+        ]
+        if generics_no_args:
+            s += f'[{", ".join(v["generics"])}]'
     s += "("
     cnt = 0
     for ai, a in enumerate(v["args"]):
         s += "" if not cnt else ", "
         cnt += 1
-        s += f'{a["name"]}'
-        if "type" in a:
+        s += f'{a["name"] or "_"}'
+        if "type" in a and a["type"]:
             s += ": " + parse_type(a["type"])
         if "default" in a:
-            s += " = " + a["default"] + ""
+            s += " = " + a["default"]
     s += ")"
     if "ret" in v:
         s += " -> " + parse_type(v["ret"])
@@ -120,10 +123,21 @@ def parse_fn(v):
     # s += "\n"
     return s
 
+def write_tag(tag, f):
+    f.write(f' <span class="api-tag">@{tag}</span>')
+
+def write_tags(v, f):
+    if "extern" in v:
+        write_tag(v["extern"], f)
+    if "attrs" in v and v["attrs"]:
+        for attr in v["attrs"]:
+             write_tag(attr, f)
 
 # 3. Create documentation for each module
 visited = set()
-for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m in mm}:
+for directory, (name, mid) in {(d, m)
+                               for d, mm in parsed_modules.items()
+                               for m in mm}:
     if directory:
         module = f"{directory.replace('/', '.')}.{name}"
     else:
@@ -176,22 +190,23 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
                 if "generics" in v and v["generics"]:
                     f.write(f'[{",".join(v["generics"])}]')
                 f.write("`**")
+                if v["type"] == "extension":
+                    write_tag("extend", f)
             elif v["kind"] == "function":
                 f.write(f'{icon("function")} **`{v["name"]}{parse_fn(v)}`**')
+                write_tags(v, f)
             elif v["kind"] == "variable":
                 f.write(f'{icon("variable")} **`{v["name"]}`**')
-            # if v['kind'] == 'class' and v['type'] == 'extension':
-            #     f.write(f'**{getLink(v["parent"])}**')
-            # else:
-            # f.write(f'{m}.**{v["name"]}**')
-            f.write("\n")
+                if "type" in v:
+                    f.write(f': `{parse_type(v["type"])}`')
+                if "value" in v:
+                    f.write(f' = `{v["value"]}`')
 
-            # f.write("\n")
-            # if v['kind'] == 'function' and 'attrs' in v and v['attrs']:
-            #     f.write("**Attributes:**" + ', '.join(f'{x}' for x in v['attrs']))
-            #     f.write("\n")
+            f.write("\n")
             if "doc" in v:
-                f.write("\n" + parse_docstr(v["doc"]) + "\n")
+                f.write("\n")
+                f.write(parse_docstr(v["doc"]))
+                f.write("\n")
             f.write("\n")
 
             if v["kind"] == "class":
@@ -206,6 +221,17 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
                 #             f.write(parse_docstr(c['doc'], 1) + "\n")
                 #         f.write("\n")
 
+                if "args" in v:
+                    fields = [c for c in v["args"] if not c["name"].startswith("_")]
+                    if fields:
+                        f.write("## Fields\n")
+                        for c in fields:
+                            f.write(f'### `{c["name"]}`')
+                            if "type" in c:
+                                f.write(f': `{parse_type(c["type"])}`\n')
+                            f.write("\n")
+                        f.write("\n")
+
                 mt = [c for c in v["members"] if j[c]["kind"] == "function"]
 
                 props = [c for c in mt if "property" in j[c].get("attrs", [])]
@@ -219,30 +245,30 @@ for directory, (name, mid) in {(d, m) for d, mm in parsed_modules.items() for m 
                         f.write("\n")
 
                 magics = [
-                    c
-                    for c in mt
-                    if len(j[c]["name"]) > 4
-                    and j[c]["name"].startswith("__")
+                    c for c in mt
+                    if len(j[c]["name"]) > 4 and j[c]["name"].startswith("__")
                     and j[c]["name"].endswith("__")
                 ]
                 if magics:
                     print("## Magic methods\n", file=f)
                     for c in magics:
                         v = j[c]
-                        f.write(
-                            f'### `{v["name"]}{parse_fn(v)}`\n'
-                        )
+                        f.write(f'### `{v["name"]}{parse_fn(v)}`')
+                        write_tags(v, f)
+                        f.write("\n")
                         if "doc" in v:
                             f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
                         f.write("\n")
-                methods = [c for c in mt if j[c]["name"][0] != "_" and c not in props]
+                methods = [
+                    c for c in mt if j[c]["name"][0] != "_" and c not in props
+                ]
                 if methods:
                     print("## Methods\n", file=f)
                     for c in methods:
                         v = j[c]
-                        f.write(
-                            f'### `{v["name"]}{parse_fn(v)}`\n'
-                        )
+                        f.write(f'### `{v["name"]}{parse_fn(v)}`')
+                        write_tags(v, f)
+                        f.write("\n")
                         if "doc" in v:
                             f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
                         f.write("\n")

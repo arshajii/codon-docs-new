@@ -32,7 +32,7 @@ jobs:
           curl -L \
             -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/exaloop/codon/actions/artifacts/3424140166/zip \
+            https://api.github.com/repos/exaloop/codon/actions/artifacts/3493975006/zip \
             -o artifact.zip
           unzip artifact.zip && rm artifact.zip
           tar -xvzf codon-linux-x86_64.tar.gz && rm codon-linux-x86_64.tar.gz

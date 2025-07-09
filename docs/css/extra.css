@@ -250,6 +250,20 @@
 }
 
 
+/* API reference tags */
+.api-tag {
+  background-color: #226BF9A0;
+  border: 1px solid #226BF9;
+  font-family: var(--md-code-font-family);
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 0.5rem;
+  display: inline-block;
+}
+
+
 /* Dark mode */
 [data-md-color-scheme="slate"] {
   --md-primary-bg-color: #F8FAF9;
