@@ -77,6 +77,11 @@ parameterized by the type of the object being pointed to (i.e.
 `Ptr[int]` is an `int` pointer, `Ptr[float]` is a `float` pointer,
 and so on).
 
+!!! danger
+
+    Pointer operations are not bounds-checked, meaning dereferencing
+    an invalid pointer can cause a segmentation fault.
+
 Buffers of a specific type can be dynamically allocated by constructing
 a `Ptr` type with an integer argument, representing the number of elements
 of the given type to allocate:
