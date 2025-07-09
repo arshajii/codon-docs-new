@@ -254,13 +254,63 @@
 .api-tag {
   background-color: #226BF9A0;
   border: 1px solid #226BF9;
-  font-family: var(--md-code-font-family);
+  font-family: var(--md-code-font-family, monospace);
   color: white;
   padding: 4px 8px;
   text-align: center;
   border-radius: 5px;
   font-size: 0.5rem;
   display: inline-block;
+  transition: background-color 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.api-tag:hover {
+  background-color: #226BF9;
+}
+
+.api-tag-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.api-tag-tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  max-width: 200px;
+  background-color: #226BF9A0;
+  border: 1px solid #226BF9;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 100%; /* Position above */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.2s ease;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.api-tag-tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #226BF9 transparent transparent transparent;
+}
+
+.api-tag-tooltip:hover .api-tag-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px); /* Lift slightly */
 }
 
 

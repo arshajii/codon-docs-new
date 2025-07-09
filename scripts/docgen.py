@@ -123,15 +123,47 @@ def parse_fn(v):
     # s += "\n"
     return s
 
+tag_tooltips = {
+    "llvm": "Function is implemented with inline LLVM IR",
+    "pure":
+    "Function has no side effects and returns same value for same inputs",
+    "nocapture":
+    "Function does not capture arguments (return value might capture)",
+    "derives": "Function return value captures arguments",
+    "no_side_effect": "Function has no side effects",
+    "self_captures": "Method's 'self' argument captures other arguments",
+    "C": "Function is external C function",
+    "overload": "Function is overloaded",
+    "extend": "Class is extended to add given methods",
+    "staticmethod": "Method is static (does not take 'self' argument)",
+    "property": "Method is a class property",
+    "associative": "Binary operator is associative",
+    "commutative": "Binary operator is commutative",
+    "distributive": "Binary operator is distributive",
+    "inline": "Function always inlined",
+    "noinline": "Function never inlined",
+    "export": "Function is visible externally",
+    "test": "Function is a test function",
+    "__internal__": "Function is compiler-generated",
+    "__attribute__": "Function is an attribute",
+}
+
 def write_tag(tag, f):
-    f.write(f' <span class="api-tag">@{tag}</span>')
+    tooltip = tag_tooltips.get(tag, "")
+    if tooltip:
+        f.write(f'  <div class="api-tag-tooltip">'
+                f'     <span class="api-tag">@{tag}</span>'
+                f'     <span class="api-tag-tooltiptext">{tooltip}</span>'
+                f'  </div>')
+    else:
+        f.write(f'  <span class="api-tag">@{tag}</span>')
 
 def write_tags(v, f):
     if "extern" in v:
         write_tag(v["extern"], f)
     if "attrs" in v and v["attrs"]:
         for attr in v["attrs"]:
-             write_tag(attr, f)
+            write_tag(attr, f)
 
 # 3. Create documentation for each module
 visited = set()
@@ -222,7 +254,9 @@ for directory, (name, mid) in {(d, m)
                 #         f.write("\n")
 
                 if "args" in v:
-                    fields = [c for c in v["args"] if not c["name"].startswith("_")]
+                    fields = [
+                        c for c in v["args"] if not c["name"].startswith("_")
+                    ]
                     if fields:
                         f.write("## Fields\n")
                         for c in fields:
