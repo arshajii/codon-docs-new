@@ -2,3 +2,4 @@ mkdocs
 mkdocs-autorefs
 mkdocs-macros-plugin
 mkdocs-material-extensions
+mkdocs-redirects
