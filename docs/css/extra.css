@@ -276,8 +276,8 @@
 }
 
 .api-tag-tooltiptext {
-  visibility: hidden;
   opacity: 0;
+  pointer-events: none;
   width: max-content;
   max-width: 200px;
   background-color: #226BF9A0;
@@ -290,8 +290,8 @@
   z-index: 10;
   bottom: 100%; /* Position above */
   left: 50%;
-  transform: translateX(-50%);
-  transition: transform 0.2s ease;
+  transform: translateX(-50%) scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
   font-size: 0.7rem;
   font-weight: bold;
 }
@@ -308,9 +308,9 @@
 }
 
 .api-tag-tooltip:hover .api-tag-tooltiptext {
-  visibility: visible;
   opacity: 1;
-  transform: translateX(-50%) translateY(-4px); /* Lift slightly */
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
 }
 
 

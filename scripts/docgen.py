@@ -151,10 +151,10 @@ tag_tooltips = {
 def write_tag(tag, f):
     tooltip = tag_tooltips.get(tag, "")
     if tooltip:
-        f.write(f'  <div class="api-tag-tooltip">'
+        f.write(f'  <span class="api-tag-tooltip">'
                 f'     <span class="api-tag">@{tag}</span>'
                 f'     <span class="api-tag-tooltiptext">{tooltip}</span>'
-                f'  </div>')
+                f'  </span>')
     else:
         f.write(f'  <span class="api-tag">@{tag}</span>')
 
