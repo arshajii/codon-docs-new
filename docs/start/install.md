@@ -23,6 +23,12 @@
     With this package installed, you can use the `@codon.jit` decorator.
     [Learn more &#x2192;](/integrations/python/codon-from-python)
 
+!!! info
+
+    Codon is supported natively on :fontawesome-brands-linux: Linux and :fontawesome-brands-apple: macOS.
+    If you are using :fontawesome-brands-windows: Windows,
+    we recommend using Codon through [WSL](https://learn.microsoft.com/en-us/windows/wsl/about).
+
 ## Run your first program
 
 With the `codon` command installed, we can compile and run a simple hello-world program:
