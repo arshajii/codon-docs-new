@@ -155,3 +155,146 @@ struct Point {
 
 As a result, tuple classes can also be used when interoperating with a C API,
 as they can mirror API-specific data structures or layouts.
+
+## Inheritance
+
+Codon supports Python's inheritance and dynamic polymorphism. For example:
+
+``` python
+class Shape:
+
+    def area(self):
+        return 0.0
+
+    def describe(self):
+        return "This is a shape."
+
+class Circle(Shape):
+    radius: float
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.1416 * self.radius**2
+
+    def describe(self):
+        return f"A circle with radius {self.radius}"
+
+class Rectangle(Shape):
+    width: float
+    height: float
+
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def describe(self):
+        return f"A rectangle with width {self.width} and height {self.height}"
+
+class Square(Rectangle):
+
+    def __init__(self, width):
+        super().__init__(width, width)
+
+    def describe(self):
+        return super().describe().replace('rectangle', 'square')
+
+
+shapes: list[Shape] = []
+shapes.append(Circle(5))
+shapes.append(Rectangle(4, 6))
+shapes.append(Square(3))
+
+for shape in shapes:
+    print(shape.describe(), f'(area={shape.area()})')
+```
+
+!!! warning
+
+    Tuple classes cannot be subclassed using standard inheritance. However, they can
+    be subclassed via static inheritance, as described below.
+
+In the code above, the methods `area()` and `describe()` are overriden by the subclasses
+of `Square`. Codon follows Python's semantics and method resolution order.
+
+### Static inheritance
+
+In addition to Python's dynamic inheritance, Codon supports static inheritance
+(or *early binding*), which can be expressed via the special `Static` type:
+
+``` python
+class Foo:
+    x: int
+
+    def __init__(self, x: int):
+        self.x = x
+
+    def hello(self):
+        print('Foo')
+
+class Bar(Static[Foo]):
+
+    def hello(self):
+        print('Bar')
+
+foo = Foo(1)
+bar = Bar(2)
+
+print(foo.x, bar.x)  # 1 2
+foo.hello()          # Foo
+bar.hello()          # Bar
+```
+
+The `hello()` method calls are resolved at compile time instead of at runtime, as would be the
+case with standard, dynamic inheritance. Static inheritance is useful when you want to reuse a
+particular class's functionality without paying the cost of
+[dynamic dispatch](https://en.wikipedia.org/wiki/Dynamic_dispatch) that is incurred with dynamic
+inheritance.
+
+Static inheritance also works on tuple classes.
+
+``` python
+@tuple
+class Foo:
+    x: int
+
+    def hello(self):
+        print('Foo')
+
+@tuple
+class Bar(Static[Foo]):
+
+    def hello(self):
+        print('Bar')
+
+foo = Foo(1)
+bar = Bar(2)
+
+print(foo.x, bar.x)  # 1 2
+foo.hello()          # Foo
+bar.hello()          # Bar
+```
+
+### Exceptions
+
+Subclasses of exception classes like `Exception`, `ValueError`, etc. must use static inheritance
+in order to be thrown and caught. Furthermore, when calling their parent class's constructor, exception
+subclasses must suply their type name as the first argument. Here is an example:
+
+``` python
+class MyException(Static[Exception]):
+    x: int
+
+    def __init__(self, x: int):
+        super().__init__('MyException', 'my exception message')
+        self.x = x
+
+try:
+    raise MyException(42)
+except MyException as e:
+    print('caught:', str(e), e.x)  # caught: my exception message 42
+```
