@@ -255,7 +255,7 @@ particular class's functionality without paying the cost of
 [dynamic dispatch](https://en.wikipedia.org/wiki/Dynamic_dispatch) that is incurred with dynamic
 inheritance.
 
-Static inheritance also works on tuple classes.
+Static inheritance also works on tuple classes:
 
 ``` python
 @tuple
@@ -283,7 +283,7 @@ bar.hello()          # Bar
 
 Subclasses of exception classes like `Exception`, `ValueError`, etc. must use static inheritance
 in order to be thrown and caught. Furthermore, when calling their parent class's constructor, exception
-subclasses must suply their type name as the first argument. Here is an example:
+subclasses must supply their type name as the first argument. Here is an example:
 
 ``` python
 class MyException(Static[Exception]):

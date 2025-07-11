@@ -19,19 +19,19 @@ For example, with a Homebrew-installed Python 3.9 on macOS, this might be
 
 Note that only Python versions 3.6 and later are supported.
 
-!!! tip
+!!! tip "Tip: Finding `libpython`"
 
     You can use
     [this](https://raw.githubusercontent.com/exaloop/codon/refs/heads/develop/test/python/find-python-library.py)
     script to locate the Python shared library for the `CODON_PYTHON` environment variable. Simply run it as
     `python3 find-python-library.py` and it will print the library path.
 
-!!! info
+!!! info "Info: Using virtual environments (`venv`)"
 
     If you are using a virtual environment created with `venv`, set `PYTHON_PATH` to the `site-packages`
     directory inside your virtual environment (e.g. `.venv/lib/python3.11/site-packages`).
 
-!!! info
+!!! info "Info: Using virtual environments (`uv`)"
 
     If you using a virtual environment created with `uv`, you can use the following steps to set up the necessary
     environment variables. From the parent directory of your python project (where `pyproject.toml` is):
