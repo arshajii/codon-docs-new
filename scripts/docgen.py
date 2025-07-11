@@ -76,17 +76,15 @@ def parse_docstr(s, level=0):
 
 def parse_type(a):
     """Parse type signature"""
-    if not a:
-        print('??', a)
-        return "?"
-    s = ""
-    if isinstance(a, list):
+    if isinstance(a, str) and not a.isdigit():
+        return a
+    elif isinstance(a, list):
         head, tail = a[0], a[1:]
     else:
         head, tail = a, None
     if head[0].isdigit() and head not in j:
         return "?"
-    s += j[head]["name"] if head[0].isdigit() else head
+    s = j[head]["name"] if head[0].isdigit() else head
     if tail:
         for ti, t in enumerate(tail):
             s += "[" if not ti else ", "
@@ -134,6 +132,7 @@ tag_tooltips = {
     "self_captures": "Method's 'self' argument captures other arguments",
     "C": "Function is external C function",
     "overload": "Function is overloaded",
+    "tuple": "Class is named tuple (cannot write fields)",
     "extend": "Class is extended to add given methods",
     "staticmethod": "Method is static (does not take 'self' argument)",
     "property": "Method is a class property",
@@ -165,6 +164,13 @@ def write_tags(v, f):
         for attr in v["attrs"]:
             write_tag(attr, f)
 
+def write_docstr(v, f):
+    if "doc" in v:
+        f.write("\n")
+        f.write(parse_docstr(v["doc"]))
+        f.write("\n")
+    f.write("\n")
+
 # 3. Create documentation for each module
 visited = set()
 for directory, (name, mid) in {(d, m)
@@ -192,18 +198,14 @@ for directory, (name, mid) in {(d, m)
 
     with open(file, mode) as f:
         if not init:
-            print(f"# module `{module}`", file=f)
+            f.write(f"# module `{module}`\n")
 
         directory_prefix = directory + "/" if directory != "." else ""
         directory = directory.strip("/")
         dir_part = (directory + "/") if directory else ""
-        print(
-            f"\nSource: [`stdlib/{dir_part}{name}.codon`](https://github.com/exaloop/codon/blob/master/stdlib/{dir_part}{name}.codon)\n",
-            file=f,
-        )
+        f.write(f"\nSource: [`stdlib/{dir_part}{name}.codon`](https://github.com/exaloop/codon/blob/master/stdlib/{dir_part}{name}.codon)\n\n")
 
-        if "doc" in j[mid]:
-            print(parse_docstr(j[mid]["doc"]), file=f)
+        write_docstr(j[mid], f)
 
         for i in j[mid]["children"]:
             v = j[i]
@@ -224,6 +226,8 @@ for directory, (name, mid) in {(d, m)
                 f.write("`**")
                 if v["type"] == "extension":
                     write_tag("extend", f)
+                elif v["type"] == "type":
+                    write_tag("tuple", f)
             elif v["kind"] == "function":
                 f.write(f'{icon("function")} **`{v["name"]}{parse_fn(v)}`**')
                 write_tags(v, f)
@@ -234,25 +238,9 @@ for directory, (name, mid) in {(d, m)
                 if "value" in v:
                     f.write(f' = `{v["value"]}`')
 
-            f.write("\n")
-            if "doc" in v:
-                f.write("\n")
-                f.write(parse_docstr(v["doc"]))
-                f.write("\n")
-            f.write("\n")
+            write_docstr(v, f)
 
             if v["kind"] == "class":
-                # if 'args' in v and any(c['name'][0] != '_' for c in v['args']):
-                #     f.write('#### Arguments:\n')
-                #     for c in v['args']:
-                #         if c['name'][0] == '_':
-                #             continue
-                #         f.write(f'- **{c["name"]} : **')
-                #         f.write(parse_type(c["type"]) + "\n")
-                #         if 'doc' in c:
-                #             f.write(parse_docstr(c['doc'], 1) + "\n")
-                #         f.write("\n")
-
                 if "args" in v:
                     fields = [
                         c for c in v["args"] if not c["name"].startswith("_")
@@ -273,10 +261,10 @@ for directory, (name, mid) in {(d, m)
                     print("## Properties\n", file=f)
                     for c in props:
                         v = j[c]
-                        f.write(f'### `{v["name"]}`\n')
-                        if "doc" in v:
-                            f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
+                        f.write(f'### `{v["name"]}`')
+                        write_tags(v, f)
                         f.write("\n")
+                        write_docstr(v, f)
 
                 magics = [
                     c for c in mt
@@ -290,9 +278,7 @@ for directory, (name, mid) in {(d, m)
                         f.write(f'### `{v["name"]}{parse_fn(v)}`')
                         write_tags(v, f)
                         f.write("\n")
-                        if "doc" in v:
-                            f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
-                        f.write("\n")
+                        write_docstr(v, f)
                 methods = [
                     c for c in mt if j[c]["name"][0] != "_" and c not in props
                 ]
@@ -303,9 +289,7 @@ for directory, (name, mid) in {(d, m)
                         f.write(f'### `{v["name"]}{parse_fn(v)}`')
                         write_tags(v, f)
                         f.write("\n")
-                        if "doc" in v:
-                            f.write("\n" + parse_docstr(v["doc"]) + "\n\n")
-                        f.write("\n")
+                        write_docstr(v, f)
             f.write("\n\n")
 
         f.write("\n\n")
